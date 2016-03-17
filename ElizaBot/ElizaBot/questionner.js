@@ -1,4 +1,0 @@
-function questionner_user()
-{
-	
-}
