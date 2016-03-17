@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+}
+
+#historique{
+    min-width: 50%;
+    min-height: 30%;
+    margin: auto;
+    display: block;
+    max-width: 50%;
+    max-height: 70%;
+}
+
+#user_input{
+    padding-top:10px;
+    width: auto;
+    display: block;
+    margin:auto;
+    text-align: center;
+}
+
+#user_input #user_input_text{
+    width: 40%;
+}
