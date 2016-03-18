@@ -35,8 +35,28 @@ ElizaBot.prototype.rechercher_correspondance = function(mots_cle) {
 	
 };
 
+/**
+* method peréttant d'ajouter une reponse a Eliza
+**/
+ElizaBot.prototype.ajouter_reponse = function(rep) {
+	if(typeof rep === "Object")
+	{
+		this.ensemble_rep.push(rep);
+	}
+};
 
-var REP = new ElizaBot([
+
+/**
+* Permet de modifier une reponse
+**/
+ElizaBot.prototype.modifier_rep = function(rep) {
+	
+};
+
+/**
+* On cré notre objet Eliza de type ElizaBot qui contient toute les reponses
+**/
+var Eliza = new ElizaBot([
 new reponse([1,2], [1,2], [1,2]),//déclaration objet reponse
 new reponse([1,2], [1,2], [1,2]),
 new reponse([1,2], [1,2], [1,2])
