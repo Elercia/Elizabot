@@ -1,4 +1,7 @@
+																																																	
 function donner_reponse()
 {
-	//mettre une condition pour appeller la fonction permettant de poser des questions
+	var saisie_utilisateur = document.getElementById("user_input_text").value;
+	var mot_clef = [];
+	mot_clef = rechercher_mot_cle(saisie_utilisateur);
 }
