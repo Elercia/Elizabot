@@ -1,10 +1,11 @@
-/*
-*foction permettant de générer une reponse
-*mots_cle : correspond à l'ensemble des mots clées
-ensemble_def : correspond à l'ensemble des définitions correspondante
-ensemble_dependance : correspond au mots clé des autres reponse dont cette reponse est dépendante
+/**
+*fonction permettant de générer une reponse
+@method     reponse
+@param      {Array}  mots_cle             { ensemble de mots clé de la reponse }
+@param      {Array}  ensemble_def         { ensemble de définitions pour expliquer la reponse }
+@param      {Array}  ensemble_dependance  { ensemble de dependance de connaissance de la reponse }
 */
-function reponse(mots_cle, ensemble_def, ensemble_dependance)
+function Reponse(mots_cle, ensemble_def, ensemble_dependance)
 {
 	if(mots_cle === "undefined" && ensemble_dependance === "undefined" && ensemble_def === "undefined")
 	{
@@ -14,10 +15,14 @@ function reponse(mots_cle, ensemble_def, ensemble_dependance)
 	this.ensemble_def = ensemble_def;
 	this.ensemble_dependance = ensemble_dependance;
 }
+
+
 /**
-*Fonction permettant de créer l'éliza bot en lui même 
-* l'ensemble des reponse contenue par le bot
-**/
+ * { Permet de créer la class ElizaBot }
+ *
+ * @class
+ * @param      {Array}  ens_rep  { Ensemble de reponse possible }
+ */
 function ElizaBot(ens_rep)
 {
 	this.ensemble_rep = ens_rep;
@@ -25,16 +30,33 @@ function ElizaBot(ens_rep)
 
 
 /**
-* Fonction permettant de rechercher une réponse graca a des mots clé
-* mots_cle : le ou les mots clé à chercher
-**/
+ * Fonction permettant de rechercher une réponse graca a des mots clé
+ *
+ * @method     rechercher_correspondance
+ * @param      {Array}   mots_cle  { Le ou les mots clé à utiliser }
+ * @return     {Reponse}  { Une reponse correspondante aux mots clé }
+ */
 ElizaBot.prototype.rechercher_correspondance = function(mots_cle) {
-	
+	var reponse;
+	for(var i in this.ensemble_rep)
+	{
+		for(var j in this.ensemble_rep[i].mot_cle)
+		{
+			if(mots_cle == this.ensemble_rep[i].mot_cle[j])
+			{
+				reponse += this.ensemble_rep[i];
+			}
+		}
+	}
+	return reponse;
 };
 
 /**
-* method peréttant d'ajouter une reponse a Eliza
-**/
+ * method peréttant d'ajouter une reponse a Eliza
+ *
+ * @method     ajouter_reponse
+ * @param      {Reponse}  rep     { une reponse a ajouter }
+ */
 ElizaBot.prototype.ajouter_reponse = function(rep) {
 	if(typeof rep === "Object")
 	{
@@ -44,17 +66,20 @@ ElizaBot.prototype.ajouter_reponse = function(rep) {
 
 
 /**
-* Permet de modifier une reponse
-**/
+ * Permet de modifier une reponse rep
+ *
+ * @method     modifier_rep
+ * @param      {Reponse}  rep     { la reponse a modifier }
+ */
 ElizaBot.prototype.modifier_rep = function(rep) {
 	
 };
 
-/**
-* On cré notre objet Eliza de type ElizaBot qui contient toute les reponses
-**/
+
 var Eliza = new ElizaBot([
-new reponse([1,2], [1,2], [1,2]),//déclaration objet reponse
-new reponse([1,2], [1,2], [1,2]),
-new reponse([1,2], [1,2], [1,2])
+new Reponse([1,2], [1,2], [1,2]),//déclaration objet reponse
+new Reponse([1,2], [1,2], [1,2]),
+new Reponse([1,2], [1,2], [1,2])
 ]);
+
+

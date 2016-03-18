@@ -1,11 +1,12 @@
 
 /**
-*le resultat correspond à la question à poser à l'utilisateur 
-*pour savoir si il connais les definitions correspondante au dépendance des mots clée rentré
-*
-*@return la question a poser à l'utilisateur
-*on recupere les dépendance des mots clé utilisé puis on génére une reponse par rapport
-*/
+ * Fonction permettant de poser des questions à l'utilisateur 
+ * en gérant la dépendance des connaissances
+ *
+ * @method     questionner_user
+ * @param      {Array}  mot_clef  { L'ensemble des mots clés correspondant à la question à poser }
+ * @return     {string}  { Le string correspondant à la question à poser }
+ */
 ElizaBot.prototype.questionner_user = function(mot_clef)
 {
 	var resultat = "";
