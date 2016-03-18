@@ -1,9 +1,3 @@
-//fichier des fonctions et des veriables globale qui seront utilisée par tous le monde
-function init(){
-	alert("Bienvenue sur le programme elizabot version 1.0");
-}
-
-
 /*
 *foction permettant de générer une reponse
 *mots_cle : correspond à l'ensemble des mots clées
