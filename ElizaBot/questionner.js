@@ -6,12 +6,10 @@
 *@return la question a poser à l'utilisateur
 *on recupere les dépendance des mots clé utilisé puis on génére une reponse par rapport
 */
-function questionner_user(mot_clef)
+ElizaBot.prototype.questionner_user = function(mot_clef)
 {
 	var resultat = "";
 	var mc = mot_clef[0];
-
-	
 
 	return resultat;  
 }
