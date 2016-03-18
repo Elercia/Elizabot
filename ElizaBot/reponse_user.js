@@ -1,4 +1,4 @@
-																																																	
+//																																													
 function donner_reponse()
 {
 	var saisie_utilisateur = document.getElementById("user_input_text").value;

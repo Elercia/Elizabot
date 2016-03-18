@@ -1,4 +1,7 @@
 //fichier des fonctions et des veriables globale qui seront utilisée par tous le monde
+function init(){
+	alert("Bienvenue sur le programme elizabot version 1.0");
+}
 
 function reponse(mots_cle, ensemble_def, ensemble_dependance)
 {
