@@ -1,5 +1,5 @@
 /**
-*fonction permettant de générer une reponse
+*fonction permettant de generer une reponse
 @method     reponse
 @param      {Array}  mots_cle             { ensemble de mots clé de la reponse }
 @param      {Array}  ensemble_def         { ensemble de définitions pour expliquer la reponse }
@@ -30,7 +30,7 @@ function ElizaBot(ens_rep)
 
 
 /**
- * Fonction permettant de rechercher une réponse graca a des mots clé
+ * Fonction permettant de rechercher une reponse grace a des mots cles
  *
  * @method     rechercher_correspondance
  * @param      {Array}   mots_cle  { Le ou les mots clé à utiliser }
@@ -52,7 +52,7 @@ ElizaBot.prototype.rechercher_correspondance = function(mots_cle) {
 };
 
 /**
- * method peréttant d'ajouter une reponse a Eliza
+ * methode premettant d'ajouter une reponse a Eliza
  *
  * @method     ajouter_reponse
  * @param      {Reponse}  rep     { une reponse a ajouter }
@@ -82,4 +82,13 @@ new Reponse([1,2], [1,2], [1,2]),
 new Reponse([1,2], [1,2], [1,2])
 ]);
 
-
+ElizaBot.prototype.afficher_reponse = function(rep) {
+	if (document.getElementById("historique").value == "")
+	{
+		document.getElementById("historique").value = "bonjour"; 
+	}
+	else
+	{
+		document.getElementById("historique").value += "\n" + rep;
+	}
+}
