@@ -12,14 +12,14 @@
 	<script type="text/javascript" src="donner_politesse.js"></script>
 	<script type="text/javascript" src="donner_exemples.js"></script>
 </head>
-<body>
+<body onload="ElizaBot.prototype.afficher_reponse()">
 	<div id="div_user_dialogue">	
 		<p>
-			<textarea id="historique"></textarea>
+			<textarea id="historique" readonly="readonly"></textarea>
 		</p>
 		<p id="user_input">
 			<input type="text" placeholder="Entrez un message pour dialoguer" id="user_input_text" onkeydown = "if (event.keyCode == 13){document.getElementById('user_input_submit').click();}" />
-			<input type="submit" value="Envoyer Message" id="user_input_submit" onclick="donner_reponse();"/>
+			<input type="submit" value="Envoyer Message" id="user_input_submit" onclick="ElizaBot.prototype.donner_reponse();"/>
 		</p>
 	</div>
 	<div id="div_modif">
