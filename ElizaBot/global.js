@@ -75,13 +75,27 @@ ElizaBot.prototype.modifier_rep = function(rep) {
 	
 };
 
+
+/**
+ * Permet d'afficher la reponse
+ *
+ * @method     afficher_reponse
+ * @param      {string}  rep     { la reponse a afficher }
+ */
 ElizaBot.prototype.afficher_reponse = function(rep) {
 	document.getElementById("historique").value += "\n[ELIZA] : " + rep;
 }
 
+
+/**
+ * Fonction chargé au démarrage de la page
+ *
+ * @method     chargement_page
+ */
 function chargement_page(){
 	document.getElementById("historique").value = "[ELIZA] : bonjour"; 
 }
+
 
 var Eliza = new ElizaBot([
 new Reponse([1,2], [1,2], [1,2]),//déclaration objet reponse
