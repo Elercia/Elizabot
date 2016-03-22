@@ -18,7 +18,7 @@ function Reponse(mots_cle, ensemble_def, ensemble_dependance)
 
 
 /**
- * { Permet de créer la class ElizaBot }
+ * Permet de créer la class ElizaBot
  *
  * @class
  * @param      {Array}  ens_rep  { Ensemble de reponse possible }
@@ -33,8 +33,8 @@ function ElizaBot(ens_rep)
  * Fonction permettant de rechercher une reponse grace a des mots cles
  *
  * @method     rechercher_correspondance
- * @param      {Array}   mots_cle  { Le ou les mots clé à utiliser }
- * @return     {Reponse}  { Une reponse correspondante aux mots clé }
+ * @param      {Array}    mots_cle  { Le ou les mots clé à utiliser }
+ * @return     {Reponse}  {Une reponse correspondante aux mots clé }
  */
 ElizaBot.prototype.rechercher_correspondance = function(mots_cle) {
 	var reponse;
@@ -75,13 +75,6 @@ ElizaBot.prototype.modifier_rep = function(rep) {
 	
 };
 
-
-var Eliza = new ElizaBot([
-new Reponse([1,2], [1,2], [1,2]),//déclaration objet reponse
-new Reponse([1,2], [1,2], [1,2]),
-new Reponse([1,2], [1,2], [1,2])
-]);
-
 ElizaBot.prototype.afficher_reponse = function(rep) {
 	document.getElementById("historique").value += "\n[ELIZA] : " + rep;
 }
@@ -89,3 +82,9 @@ ElizaBot.prototype.afficher_reponse = function(rep) {
 function chargement_page(){
 	document.getElementById("historique").value = "[ELIZA] : bonjour"; 
 }
+
+var Eliza = new ElizaBot([
+new Reponse([1,2], [1,2], [1,2]),//déclaration objet reponse
+new Reponse([1,2], [1,2], [1,2]),
+new Reponse([1,2], [1,2], [1,2])
+]);
