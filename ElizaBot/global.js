@@ -83,12 +83,9 @@ new Reponse([1,2], [1,2], [1,2])
 ]);
 
 ElizaBot.prototype.afficher_reponse = function(rep) {
-	if (document.getElementById("historique").value == "")
-	{
-		document.getElementById("historique").value = "bonjour"; 
-	}
-	else
-	{
-		document.getElementById("historique").value += "\n" + rep;
-	}
+	document.getElementById("historique").value += "\n[ELIZA] : " + rep;
+}
+
+function chargement_page(){
+	document.getElementById("historique").value = "[ELIZA] : bonjour"; 
 }
