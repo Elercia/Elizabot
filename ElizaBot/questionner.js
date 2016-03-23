@@ -11,12 +11,20 @@ ElizaBot.prototype.questionner_user = function(mot_clef)
 {
 	var resultat = "Connaît tu la notion de ";
 
-	var rep = this.rechercher_correspondance(mot_clef[0]);//on recherche la reponse correspondnat au mot clé que l'on nous a donné
-	var dep = rep.ensemble_dependance;//on recupere ces dépendances
+	var rep1 = this.rechercher_correspondance(mot_clef);//on recherche la reponse correspondnat au mot clé que l'on nous a donné
+	alert(typeof rep1);
+	if(!(rep1 instanceof Reponse))
+	{
+		resultat = "je n'ai malheureusement pas de question à te poser";
+	}
+	var dep = rep1.ensemble_dependance;//on recupere ces dépendances
 
-	rep = this.rechercher_correspondance(dep[0]);//on recherche une reponse par rapport aux dépendances.
-
-	resultat+= rep.mots_cle[0];
-
+	var rep2 = this.rechercher_correspondance(dep[0]);//on recherche une reponse par rapport aux dépendances.
+	if(!(rep2 instanceof Reponse))
+	{
+		resultat = "je n'ai malheureusement pas de question à te poser";
+	}
+	resultat += rep2.mots_cle[0];
+	alert(resultat);
 	return resultat;  
 }
