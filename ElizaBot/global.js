@@ -7,7 +7,7 @@
 */
 function Reponse(mots_cle, ensemble_def, ensemble_dependance)
 {
-	if(mots_cle === "undefined" && ensemble_dependance === "undefined" && ensemble_def === "undefined")
+	if(mots_cle === "undefined"  && ensemble_def === "undefined" && ensemble_dependance === "undefined")
 	{
 		alert("Mauvaise rentrée de définition");
 	}
