@@ -11,6 +11,7 @@ body{
     display: block;
     max-width: 50%;
     max-height: 70%;
+    resize: none;
 }
 
 #user_input{

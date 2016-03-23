@@ -2,7 +2,7 @@
 *fonction permettant de generer une reponse
 @method     reponse
 @param      {Array}  mots_cle             { ensemble de mots clé de la reponse }
-@param      {Array}  ensemble_def         { ensemble de définitions pour expliquer la reponse }
+@param      {String}  ensemble_def         { ensemble de définitions pour expliquer la reponse }
 @param      {Array}  ensemble_dependance  { ensemble de dependance de connaissance de la reponse }
 */
 function Reponse(mots_cle, ensemble_def, ensemble_dependance)
@@ -75,7 +75,6 @@ ElizaBot.prototype.modifier_rep = function(rep) {
 	
 };
 
-
 /**
  * Permet d'afficher la reponse
  *
@@ -83,7 +82,11 @@ ElizaBot.prototype.modifier_rep = function(rep) {
  * @param      {string}  rep     { la reponse a afficher }
  */
 ElizaBot.prototype.afficher_reponse = function(rep) {
+	document.getElementById("historique").value += "\n[USER]  : " + document.getElementById("user_input_text").value;
 	document.getElementById("historique").value += "\n[ELIZA] : " + rep;
+	document.getElementById("user_input_text").value = "";
+	var textArea = document.getElementById('historique');
+    textArea.scrollTop = textArea.scrollHeight;
 }
 
 
@@ -93,12 +96,12 @@ ElizaBot.prototype.afficher_reponse = function(rep) {
  * @method     chargement_page
  */
 function chargement_page(){
-	document.getElementById("historique").value = "[ELIZA] : bonjour"; 
+	document.getElementById("historique").value = "[ELIZA] : bonjour";
+	document.getElementById("user_input_text").value = ""; 
 }
 
-
 var Eliza = new ElizaBot([
-new Reponse([1,2], [1,2], [1,2]),//déclaration objet reponse
-new Reponse([1,2], [1,2], [1,2]),
-new Reponse([1,2], [1,2], [1,2])
+new Reponse(["clef1", "clef11"], "reponse1", "graphe"),//déclaration objet reponse
+new Reponse(["clef2", "clef22"], "reponse2", ["clef1", "clef11"]),
+new Reponse(["clef3", "clef33"], "reponse3", ["clef2", "clef22"])
 ]);
