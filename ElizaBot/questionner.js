@@ -19,8 +19,11 @@ ElizaBot.prototype.questionner_user = function(mot_clef)
 	else
 	{
 		var dep = rep1.ensemble_dependance;//on recupere ces dépendances
-		resultat += dep.join(" ");
+		if(typeof dep[0] === "Array")
+			resultat = dep[0].join(" ");
+		else
+			resultat += dep.join(" ");
 	}
-	alert(resultat);
+
 	return resultat;  
 }
