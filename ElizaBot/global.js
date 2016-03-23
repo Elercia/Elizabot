@@ -64,17 +64,6 @@ ElizaBot.prototype.ajouter_reponse = function(rep) {
 	}
 };
 
-
-/**
- * Permet de modifier une reponse rep
- *
- * @method     modifier_rep
- * @param      {Reponse}  rep     { la reponse a modifier }
- */
-ElizaBot.prototype.modifier_rep = function(rep) {
-	
-};
-
 /**
  * Permet d'afficher la reponse
  *
@@ -90,6 +79,12 @@ ElizaBot.prototype.afficher_reponse = function(rep) {
 }
 
 
+var Eliza = new ElizaBot([
+new Reponse(["clef1", "clef11"], "reponse1", "graphe"),//déclaration objet reponse
+new Reponse(["clef2", "clef22"], "reponse2", ["clef1", "clef11"]),
+new Reponse(["clef3", "clef33"], "reponse3", ["clef2", "clef22"])
+]);
+
 /**
  * Fonction chargé au démarrage de la page
  *
@@ -97,11 +92,26 @@ ElizaBot.prototype.afficher_reponse = function(rep) {
  */
 function chargement_page(){
 	document.getElementById("historique").value = "[ELIZA] : bonjour";
-	document.getElementById("user_input_text").value = ""; 
-}
+	document.getElementById("user_input_text").value = "";
 
-var Eliza = new ElizaBot([
-new Reponse(["clef1", "clef11"], "reponse1", "graphe"),//déclaration objet reponse
-new Reponse(["clef2", "clef22"], "reponse2", ["clef1", "clef11"]),
-new Reponse(["clef3", "clef33"], "reponse3", ["clef2", "clef22"])
-]);
+	//fonction initialisation export bdd
+	var f = document.getElementById("file_user_export");
+	f.onchange = function(){
+		var file = f.files[0];
+		fr = new FileReader();
+		fr.onprogress = function(){
+			console.log("Chargement du fichier de conficguration");
+		};
+
+		fr.onerror = function(){
+			console.log("Erreur du chargement du fichier de configuration");
+		};
+
+		fr.onload = function(){
+			console.log("Chargement du fichier éxecuté");
+			Eliza.modifier_bdd(fr.result);
+		};
+
+		fr.readAsText(file);
+	};
+}
