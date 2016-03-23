@@ -1,4 +1,3 @@
-
 /**
  * Fonction permettant de poser des questions à l'utilisateur 
  * en gérant la dépendance des connaissances
@@ -11,12 +10,20 @@ ElizaBot.prototype.questionner_user = function(mot_clef)
 {
 	var resultat = "Connaît tu la notion de ";
 
-	var rep = this.rechercher_correspondance(mot_clef[0]);//on recherche la reponse correspondnat au mot clé que l'on nous a donné
-	var dep = rep.ensemble_dependance;//on recupere ces dépendances
+	var rep1 = this.rechercher_correspondance(mot_clef);//on recherche la reponse correspondant au mot clé que l'on nous a donné
 
-	rep = this.rechercher_correspondance(dep[0]);//on recherche une reponse par rapport aux dépendances.
-
-	resultat+= rep.mots_cle[0];
+	if(!(rep1 instanceof Reponse))
+	{
+		resultat = "je n'ai malheureusement pas de question à te poser";
+	}
+	else
+	{
+		var dep = rep1.ensemble_dependance;//on recupere ces dépendances
+		if(typeof dep[0] === "Array")
+			resultat = dep[0].join(" ");
+		else
+			resultat += dep.join(" ");
+	}
 
 	return resultat;  
 }
