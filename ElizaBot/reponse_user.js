@@ -1,7 +1,18 @@
-																																																	
-function donner_reponse()
+//																																													
+ElizaBot.prototype.donner_reponse = function()
 {
-	var saisie_utilisateur = document.getElementById("user_input_text").value;
-	var mot_clef = [];
-	mot_clef = rechercher_mot_cle(saisie_utilisateur);
+	if (document.getElementById("user_input_text").value != "")
+	{
+		var saisie_utilisateur = document.getElementById("user_input_text").value;
+		var mot_clef = rechercher_mot_cle(saisie_utilisateur);
+		var laReponse = this.rechercher_correspondance(mot_clef);
+		if (typeof laReponse!="undefined") {
+			var reponse = laReponse.ensemble_def;
+			this.afficher_reponse(reponse);
+		}
+		else
+		{
+			this.afficher_reponse("Je ne comprend pas");
+		}
+	}
 }
