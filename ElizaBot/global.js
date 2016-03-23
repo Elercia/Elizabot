@@ -18,7 +18,7 @@ function Reponse(mots_cle, ensemble_def, ensemble_dependance)
 
 
 /**
- * { Permet de créer la class ElizaBot }
+ * Permet de créer la class ElizaBot
  *
  * @class
  * @param      {Array}  ens_rep  { Ensemble de reponse possible }
@@ -33,8 +33,8 @@ function ElizaBot(ens_rep)
  * Fonction permettant de rechercher une reponse grace a des mots cles
  *
  * @method     rechercher_correspondance
- * @param      {Array}   mots_cle  { Le ou les mots clé à utiliser }
- * @return     {Reponse}  { Une reponse correspondante aux mots clé }
+ * @param      {Array}    mots_cle  { Le ou les mots clé à utiliser }
+ * @return     {Reponse}  {Une reponse correspondante aux mots clé }
  */
 ElizaBot.prototype.rechercher_correspondance = function(mots_cle) {
 	var reponse;
@@ -75,13 +75,12 @@ ElizaBot.prototype.modifier_rep = function(rep) {
 	
 };
 
-
-var Eliza = new ElizaBot([
-new Reponse(["clef1", "clef11"], "reponse1", "graphe"),//déclaration objet reponse
-new Reponse(["clef2", "clef22"], "reponse2", ["clef1", "clef11"]),
-new Reponse(["clef3", "clef33"], "reponse3", ["clef2", "clef22"])
-]);
-
+/**
+ * Permet d'afficher la reponse
+ *
+ * @method     afficher_reponse
+ * @param      {string}  rep     { la reponse a afficher }
+ */
 ElizaBot.prototype.afficher_reponse = function(rep) {
 	document.getElementById("historique").value += "\n[USER]  : " + document.getElementById("user_input_text").value;
 	document.getElementById("historique").value += "\n[ELIZA] : " + rep;
@@ -90,7 +89,19 @@ ElizaBot.prototype.afficher_reponse = function(rep) {
     textArea.scrollTop = textArea.scrollHeight;
 }
 
+
+/**
+ * Fonction chargé au démarrage de la page
+ *
+ * @method     chargement_page
+ */
 function chargement_page(){
 	document.getElementById("historique").value = "[ELIZA] : bonjour";
 	document.getElementById("user_input_text").value = ""; 
 }
+
+var Eliza = new ElizaBot([
+new Reponse(["clef1", "clef11"], "reponse1", "graphe"),//déclaration objet reponse
+new Reponse(["clef2", "clef22"], "reponse2", ["clef1", "clef11"]),
+new Reponse(["clef3", "clef33"], "reponse3", ["clef2", "clef22"])
+]);
