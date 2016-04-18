@@ -1,5 +1,11 @@
 //fichier permettant à l'utilisateur de modifier la base de donnée à l'aide de fichier de configuration
 
+/**
+ * { Fonction permettant de modifier la bdd grâce à un fichier de configuration}
+ *
+ * @method     modifier_bdd
+ * @param      {string}  argv    { le contenue du fichier chargé }
+ */
 ElizaBot.prototype.modifier_bdd = function(argv) {
 	var data = argv.split("</data>");//on insole chaque reponse
 	var result;
@@ -40,6 +46,11 @@ ElizaBot.prototype.modifier_bdd = function(argv) {
 	}
 };
 
+/**
+ * { Permet de télécharger le fichier de configuration }
+ *
+ * @method     exporter_bdd
+ */
 ElizaBot.prototype.exporter_bdd = function()
 {
 	var result = "\n";
@@ -99,3 +110,21 @@ ElizaBot.prototype.exporter_bdd = function()
     //Simulation d'un click
     bu.click();
 }
+
+/**
+ * { Permet à l'utilisateur d'ajouter des réponses ou de les modifier visuellement }
+ *
+ * @method     maintenance_bdd
+ */
+ElizaBot.prototype.maintenance_bdd = function() {
+	var text, a;
+	var div = document.getElementById("div_modif");
+	for(var i in this.ensemble_rep)
+	{
+		a = this.ensemble_rep[i];
+		text = document.createElement("input");
+		text.setAttribute("type", "text");
+		text.setAttribute("value", a.mots_cle);
+		div.appendChild(text);
+	}
+};
