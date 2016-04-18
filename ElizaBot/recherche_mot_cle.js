@@ -1,5 +1,5 @@
 /*Fonction recherche mot clé et gérage de la casse*/
-function rechercher_mot_cle(saisie_utilisateur)
+ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 {
 	var minuscule;
 	var espace = " ";
@@ -29,7 +29,7 @@ function rechercher_mot_cle(saisie_utilisateur)
 	//Parcourir les mots du tableau et rechercher si = tableau mot clé
 	for(i = 0;i <= tab_split.length;i++)
 	{
-	    for(j = 0;j <= .length;j++)
+	    for(j = 0;j <= this.mots_cle.length;j++)
 	    {
 	        if(tab_split[i] === [j])
 	        {

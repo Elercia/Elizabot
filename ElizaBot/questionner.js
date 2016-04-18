@@ -1,5 +1,5 @@
 /**
- * Fonction permettant de poser des questions à l'utilisateur 
+ * Méthode permettant de poser des questions à l'utilisateur 
  * en gérant la dépendance des connaissances
  *
  * @method     questionner_user
