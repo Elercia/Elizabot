@@ -13,7 +13,7 @@ ElizaBot.prototype.donner_reponse = function()
 
 		if (mot_cle.length>1)
 		{
-			mot_cle = this.choisir_mot_cle(mot_cle);
+			this.choisir_mot_cle(mot_cle);
 		}
 		else
 		{
@@ -48,17 +48,40 @@ ElizaBot.prototype.donner_reponse = function()
  */
 ElizaBot.prototype.choisir_mot_cle = function(mot_cle)
 {
-	var affichage = "Je ne comprend pas de quoi vous vouliez parler, voulez vous parler de ";
-		for (i in mot_cle)
+ 	var affichage = "Je ne comprend pas de quoi vous vouliez parler, voulez vous parler de ";
+	//Comme ça le bot ne repete pas plusieurs fois la même chose
+	var tableauDejaDit = [];
+	var trouve;
+	//On parcourt tous les mot clef
+	for (i in mot_cle)
+	{
+		trouve=false;
+		for (j in tableauDejaDit)
 		{
-			if (i<mot_cle.length-1)
+			//Si le motClef à déjà été cité
+			if (mot_cle[i]==tableauDejaDit[j])
 			{
-				affichage += mot_cle[i]+", ou de ";
-			}
-			else
-			{
-				affichage += mot_cle[i]+"?";
+				trouve=true;
 			}
 		}
-		this.afficher_reponse(affichage);
+		//Si ce n'est pas le dernier mot
+		if ((i<mot_cle.length-1) && (trouve==false))
+		{
+			console.log(mot_cle.length + "i :" + i);
+			affichage += mot_cle[i]+", ou de ";
+			tableauDejaDit.push(mot_cle[i])
+		}
+		else if ((i==mot_cle.length-1) && (trouve==false))
+		{
+			affichage += mot_cle[i]+"?";
+		}
+	}
+
+	// S'il reste un ", ou de" à la fin de l'affichage, on le supprime
+	if (affichage.substring(affichage.length-8,affichage.length-1)==", ou de")
+	{
+		affichage=affichage.slice(0,affichage.length-8);
+		affichage+= "?";
+	}
+	this.afficher_reponse(affichage);
 }
