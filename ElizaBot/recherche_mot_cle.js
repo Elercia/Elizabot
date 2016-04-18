@@ -1,7 +1,7 @@
 /*Fonction recherche mot clé et gérage de la casse*/
 ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 {
-	saisie_utilisateur = "clef1, clef11, clef2";
+    alert(this.ensemble_rep[1]);
 	var minuscule;
 	var espace = " ";
 	var retour = [];
@@ -26,11 +26,11 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	tab_split = minuscule.split(espace);
 	
 	//Parcourir les mots du tableau et rechercher si = tableau mot clé
-	for(var i = 0; i <= tab_split.length; i++)
+	for(var i = 0; i < tab_split.length; i++)
 	{
-	    for(var j = 0; j <= this.ensemble_rep.length; j++)
+	    for(var j = 0; j < this.ensemble_rep.length; j++)
 	    {
-	        for(var k = 0; k <= this.ensemble_rep[j].mots_cle.length; k++)
+	        for(var k in (this.ensemble_rep[j]).mots_cle)
 	        {
 	            if(tab_split[i] === this.ensemble_rep[j].mots_cle[k])
 	            {
@@ -40,7 +40,7 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	    }
 	}
 	
-	//retourner le tableau avec les mots clés
+	//Retourner le tableau avec les mots clés
 	return retour;
 	console.log(retour);
 }
