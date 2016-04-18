@@ -34,7 +34,6 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	            if((tab_split[i]) === (this.ensemble_rep[j].mots_cle[k]))
 	            {	
 	                retour.push(tab_split[i]);
-
 	            }
 	        }
 	    }
