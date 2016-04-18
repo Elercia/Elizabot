@@ -39,3 +39,63 @@ ElizaBot.prototype.modifier_bdd = function(argv) {
 		Eliza.ajouter_reponse(new Reponse(result[0], result[1], result[2]));
 	}
 };
+
+ElizaBot.prototype.exporter_bdd = function()
+{
+	var result = "\n";
+	var a;
+	for(var i in this.ensemble_rep)
+	{
+		a=this.ensemble_rep[i];
+		result += "<data>\n";
+		result += "\t<motcle>";
+		if(typeof a.mots_cle != "string")
+		{
+			result+="[";
+			result+=a.mots_cle; 
+			result+="]";
+		}
+		else
+		{
+			result+=a.mots_cle; 	
+		}
+		result += "</motcle>\n";
+		result += "\t<reponse>";
+
+		if(typeof a.ensemble_def != "string")
+		{
+			result+="[";
+			result+=a.ensemble_def; 
+			result+="]";
+		}
+		else
+		{
+			result+=a.ensemble_def; 
+		}
+		result += "</reponse>\n";
+
+		result += "\t<dep>";
+		if(typeof a.ensemble_dependance != "string")
+		{
+			result+="[";
+			result+=a.ensemble_dependance; 
+			result+="]";
+		}
+		else
+		{
+			result+=a.ensemble_dependance; 
+		}
+		result += "</dep>\n";
+		result += "</data>\n"
+	}
+
+	//Création d'un objet LIEN
+    var bu = document.getElementById('down');
+    bu.setAttribute("href", "data:text/plain;charset=utf-8,"+encodeURIComponent(result));
+
+    //Nom du fichier
+    //bu.setAttribute("download", "lol.txt");
+
+    //Simulation d'un click
+    bu.click();
+}
