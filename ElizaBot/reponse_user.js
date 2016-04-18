@@ -11,10 +11,12 @@ ElizaBot.prototype.donner_reponse = function()
 		//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
 		var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
 
+		//S'il y a plus d'un mot cle, on demandera à l'utilisateur de quel notion il veut parler
 		if (mot_cle.length>1)
 		{
 			this.choisir_mot_cle(mot_cle);
 		}
+		//Sinon on trouve la réponse pour lui envoyer
 		else
 		{
 			//on recherche la reponse (motclef/ensembledef/ensembledependance) correspondant au mot clef
@@ -36,7 +38,7 @@ ElizaBot.prototype.donner_reponse = function()
 			}
 			else
 			{
-				this.afficher_reponse("Je ne comprend pas");
+				this.incompréhension();
 			}
 		}
 		
@@ -63,4 +65,24 @@ ElizaBot.prototype.choisir_mot_cle = function(mot_cle)
 		}
 	}
 	this.afficher_reponse(affichage);
+}
+
+ElizaBot.prototype.incompréhension = function(mot_cle)
+{
+	if (Math.random()<0.25)
+	{
+		this.afficher_reponse("Je ne comprend pas");
+	}
+	else if (Math.random()<0.5)
+	{
+		this.afficher_reponse("Vous pouvez détailler?");
+	}
+	else if (Math.random()<0.75)
+	{
+		this.afficher_reponse("Pardon?");
+	}
+	else
+	{
+		this.afficher_reponse("Je craint ne pas avoir compris ce que vous avez dit");
+	}
 }
