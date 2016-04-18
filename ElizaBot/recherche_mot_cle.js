@@ -6,8 +6,6 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	var espace = " ";
 	var retour = [];
 	var tab_split;
-	var i;
-	var j;	
 	
 	//On enlève les signes de ponctuation et les accents pour ne pas bloquer un mot clé
 	saisie_utilisateur = saisie_utilisateur.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ");	
@@ -28,13 +26,16 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	tab_split = minuscule.split(espace);
 	
 	//Parcourir les mots du tableau et rechercher si = tableau mot clé
-	for(i = 0;i <= tab_split.length;i++)
+	for(var i = 0; i <= tab_split.length; i++)
 	{
-	    for(j = 0;j <= this.mots_cle.length;j++)
+	    for(var j = 0; j <= this.ensemble_rep.length; j++)
 	    {
-	        if(tab_split[i] === [j])
+	        for(var k = 0; this.ensemble_rep[j].mots_cle.length; k++)
 	        {
-	            retour.push(tab_split[i]);
+	            if(tab_split[i] === this.ensemble_rep[j].mots_cle[k])
+	            {
+	                retour.push(tab_split[i]);
+	            }
 	        }
 	    }
 	}
