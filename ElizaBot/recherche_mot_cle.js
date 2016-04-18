@@ -1,7 +1,6 @@
-/*Fonction recherche mot clé et gérage de la casse*/
+/*Fonction recevant le message de l'utilisateur, puis gérant les caractères spéciaux et met le tout en miniscule et renvoie les mots clés*/
 ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 {
-    alert(this.ensemble_rep[1]);
 	var minuscule;
 	var espace = " ";
 	var retour = [];
@@ -32,9 +31,15 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	    {
 	        for(var k in (this.ensemble_rep[j]).mots_cle)
 	        {
-	            if(tab_split[i] === this.ensemble_rep[j].mots_cle[k])
+	            if((tab_split[i]) === (this.ensemble_rep[j].mots_cle[k]))
 	            {
-	                retour.push(tab_split[i]);
+	                for(var l = 0; l < retour.length; l++)
+	                {
+	                    if((tab_split[i]) != (retour[l]))
+	                    {
+	                        retour.push(tab_split[i]);
+	                    }
+	                }
 	            }
 	        }
 	    }

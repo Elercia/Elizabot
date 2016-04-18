@@ -36,8 +36,8 @@ function ElizaBot(ens_rep)
  * @param      {Array}    mots_cle  { Le ou les mots clé à utiliser }
  * @return     {Reponse}  {Une reponse correspondante aux mots clé }
  */
-ElizaBot.prototype.rechercher_correspondance = function(mots_cle) {
-	//Non fonctionnelle
+ElizaBot.prototype.rechercher_correspondance = function(mots_cle)
+{
 	for(var i in this.ensemble_rep)
 	{
 		for(var j in this.ensemble_rep[i].mots_cle)
@@ -71,7 +71,7 @@ ElizaBot.prototype.ajouter_reponse = function(rep) {
  */
 ElizaBot.prototype.afficher_reponse = function(rep) {
 	document.getElementById("historique").value += "\n[USER]  : " + document.getElementById("user_input_text").value;
-	document.getElementById("historique").value += "\n[ELIZA] : " + rep;
+	document.getElementById("historique").value += "\n[SOLEN] : " + rep;
 	document.getElementById("user_input_text").value = "";
 	var textArea = document.getElementById('historique');
     textArea.scrollTop = textArea.scrollHeight;
@@ -90,7 +90,7 @@ new Reponse(["cle3", "cle33"], "reponse3", ["cle2", "cle22"])
  * @method     chargement_page
  */
 function chargement_page(){
-	document.getElementById("historique").value = "[ELIZA] : bonjour";
+	document.getElementById("historique").value = "[SOLEN] : Bonjour";
 	document.getElementById("user_input_text").value = "";
 
 	//fonction initialisation export bdd
@@ -99,7 +99,7 @@ function chargement_page(){
 		var file = f.files[0];
 		fr = new FileReader();
 		fr.onprogress = function(){
-			console.log("Chargement du fichier de conficguration");
+			console.log("Chargement du fichier de configuration");
 		};
 
 		fr.onerror = function(){
