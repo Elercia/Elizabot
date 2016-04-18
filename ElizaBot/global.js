@@ -79,9 +79,9 @@ ElizaBot.prototype.afficher_reponse = function(rep) {
 
 
 var Eliza = new ElizaBot([
-new Reponse(["clef1", "clef11"], "reponse1", "graphe"),//déclaration objet reponse
-new Reponse(["clef2", "clef22"], "reponse2", ["clef1", "clef11"]),
-new Reponse(["clef3", "clef33"], "reponse3", ["clef2", "clef22"])
+new Reponse(["cle1", "cle11"], "reponse1", "graphe"),//déclaration objet reponse
+new Reponse(["cle2", "cle22"], "reponse2", ["cle1", "cle11"]),
+new Reponse(["cle3", "cle33"], "reponse3", ["cle2", "cle22"])
 ]);
 
 /**
