@@ -30,7 +30,7 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	{
 	    for(var j = 0; j <= this.ensemble_rep.length; j++)
 	    {
-	        for(var k = 0; this.ensemble_rep[j].mots_cle.length; k++)
+	        for(var k = 0; k <= this.ensemble_rep[j].mots_cle.length; k++)
 	        {
 	            if(tab_split[i] === this.ensemble_rep[j].mots_cle[k])
 	            {
