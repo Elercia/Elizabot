@@ -9,7 +9,7 @@ ElizaBot.prototype.donner_reponse = function()
 		var saisie_utilisateur = document.getElementById("user_input_text").value;
 
 		//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
-		var mot_cle = recherche_mot_cle(saisie_utilisateur);
+		var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
 
 		if (mot_cle.length>1)
 		{
