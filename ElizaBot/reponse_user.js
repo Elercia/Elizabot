@@ -9,10 +9,10 @@ ElizaBot.prototype.donner_reponse = function()
 		var saisie_utilisateur = document.getElementById("user_input_text").value;
 
 		//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
-		var mot_clef = rechercher_mot_cle(saisie_utilisateur);
+		var mot_cle = rechercher_mot_cle(saisie_utilisateur);
 
 		//on recherche la reponse (motclef/ensembledef/ensembledependance) correspondant au mot clef
-		var reponse = this.rechercher_correspondance(mot_clef);
+		var reponse = this.rechercher_correspondance(mot_cle);
 
 		//si la reponse existe
 		if (typeof reponse!="undefined") {
@@ -20,7 +20,7 @@ ElizaBot.prototype.donner_reponse = function()
 			donc pour definition "incompréhension*/
 			if (reponse.ensemble_def == "incomprehension")
 			{
-				var affichage = questionner(mot_clef);
+				var affichage = questionner(mot_cle);
 			}
 			else
 			{
