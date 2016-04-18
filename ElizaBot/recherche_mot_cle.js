@@ -32,20 +32,27 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	        for(var k in (this.ensemble_rep[j]).mots_cle)
 	        {
 	            if((tab_split[i]) === (this.ensemble_rep[j].mots_cle[k]))
-	            {
-	                for(var l = 0; l < retour.length; l++)
-	                {
-	                    if((tab_split[i]) != (retour[l]))
-	                    {
-	                        retour.push(tab_split[i]);
-	                    }
-	                }
+	            {	
+	                retour.push(tab_split[i]);
+
 	            }
 	        }
 	    }
 	}
+	var tmp;
+	for(var l = 0; l < retour.length; l++)
+	{
+	    tmp = retour[l];
+	    for(var m = (l+1); m < retour.length; m++)
+	    {
+	        if(tmp === retour[m])
+	        {
+	            retour.splice(m, 1);
+	        }
+	    }
+	}
+	console.log(retour);
 	
 	//Retourner le tableau avec les mots clés
 	return retour;
-	console.log(retour);
 }
