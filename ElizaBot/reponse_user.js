@@ -13,11 +13,11 @@ ElizaBot.prototype.donner_reponse = function()
 
 		//on recherche la reponse (motclef/ensembledef/ensembledependance) correspondant au mot clef
 		var reponse = this.rechercher_correspondance(mot_cle);
-
+		
 		//si la reponse existe
 		if (typeof reponse!="undefined") {
 			/*Si le mot clef fait parti du champ lexical de l'incompréhension et a 
-			donc pour definition "incompréhension*/
+			donc pour definition "incompréhension" */
 			if (reponse.ensemble_def == "incomprehension")
 			{
 				var affichage = questionner(mot_cle);

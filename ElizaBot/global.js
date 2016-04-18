@@ -37,18 +37,17 @@ function ElizaBot(ens_rep)
  * @return     {Reponse}  {Une reponse correspondante aux mots clé }
  */
 ElizaBot.prototype.rechercher_correspondance = function(mots_cle) {
-	var reponse;
+	//Non fonctionnelle
 	for(var i in this.ensemble_rep)
 	{
-		for(var j in this.ensemble_rep[i].mot_cle)
+		for(var j in this.ensemble_rep[i].mots_cle)
 		{
-			if(mots_cle == this.ensemble_rep[i].mot_cle[j])
+			if(mots_cle == this.ensemble_rep[i].mots_cle[j])
 			{
-				reponse += this.ensemble_rep[i];
+				return this.ensemble_rep[i];
 			}
 		}
 	}
-	return reponse;
 };
 
 /**
