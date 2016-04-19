@@ -105,15 +105,24 @@ ElizaBot.prototype.modifier_reponse = function(argv1, argv2) {
 		var num = Number(argv1);
 		if(argv2.id == "div_def_cle")
 		{
-			this.ensemble_rep[num].changer_cle(argv2.value.split(","));
+			if(argv2.value.split(",").length > 1)
+				this.ensemble_rep[num].changer_cle(argv2.value.split(","));
+			else
+				this.ensemble_rep[num].changer_cle(argv2.value);
 		}
 		else if(argv2.id == "div_def_def")
 		{
-			this.ensemble_rep[num].changer_def(argv2.value.split(","));
+			if(argv2.value.split(",").length > 1)
+				this.ensemble_rep[num].changer_def(argv2.value.split(","));
+			else
+				this.ensemble_rep[num].changer_def(argv2.value);
 		}
 		else if(argv2.id == "div_def_dep")
 		{
-			this.ensemble_rep[num].changer_dep(argv2.value.split(","));
+			if(argv2.value.split(",").length > 1)
+				this.ensemble_rep[num].changer_dep(argv2.value.split(","));
+			else
+				this.ensemble_rep[num].changer_dep(argv2.value);
 		}
 		//this.ensemble_rep[num]=;
 	}
