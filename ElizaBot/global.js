@@ -138,7 +138,7 @@ var Eliza = new ElizaBot([
 new Reponse(["cle1", "cle11"], "reponse1", "graphe"),// déclaration objet reponse
 new Reponse(["cle2", "cle22"], "reponse2", ["cle1", "cle11"]),
 new Reponse(["cle3", "cle33"], "reponse3", ["cle2", "cle22"]),
-new Reponse(["SAME INPUT"], "Il me semble que vous vous répetez", []),
+new Reponse(["sameinput"], "Il me semble que vous vous répetez", []),
 ]);
 
 /**
