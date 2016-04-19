@@ -76,17 +76,18 @@ ElizaBot.prototype.choisir_mot_cle = function(mot_cle)
 	this.afficher_reponse(affichage);
 }
 
-ElizaBot.prototype.pasTrouve = function(mot_cle)
+ElizaBot.prototype.pasTrouve = function()
 {
-	if (Math.random()<0.25)
+	proba = Math.random();
+	if (proba<0.25)
 	{
 		this.afficher_reponse("Je ne comprend pas");
 	}
-	else if (Math.random()<0.5)
+	else if (proba<0.5)
 	{
 		this.afficher_reponse("Vous pouvez détailler?");
 	}
-	else if (Math.random()<0.75)
+	else if (proba<0.75)
 	{
 		this.afficher_reponse("Pardon?");
 	}
