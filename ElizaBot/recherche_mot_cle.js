@@ -54,9 +54,6 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
         }
     }
     
-    
-	
-	alert(retour); //Affiche le tableau de retour dans une fenêtre
 	console.log(retour); //Affiche le tableau de retour dans la console
 	return retour;//Retourner le tableau avec les mots clés
 }
