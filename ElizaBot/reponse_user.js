@@ -10,7 +10,9 @@ ElizaBot.prototype.donner_reponse = function()
 
 		//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
 		var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
-		if (comparer_tableau(mot_cle, this.dernier_mot_cle))  //Si c'est le même mot cle que précedemment
+		
+		//Si c'est le même mot cle que précedemment
+		if ((comparer_tableau(mot_cle, this.dernier_mot_cle)) && (this.dernier_mot_cle!=""))
 		{
 			mot_cle = ["sameinput"];
 		}
