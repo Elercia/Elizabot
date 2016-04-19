@@ -1,7 +1,16 @@
 body{
-    margin: 0;
-    padding: 0;
-    padding-top: 10px;
+    padding:0;
+    margin:30px;
+    background-color:#CEE3F6;
+}
+
+h1
+{
+    font-size:35px;
+    text-align:center;
+    font-family:Rekha;
+    font-style:italic;
+    color:#585858;
 }
 
 #historique{
@@ -12,6 +21,8 @@ body{
     max-width: 50%;
     max-height: 70%;
     resize: none;
+    background-color:#A9D0F5;
+    color:#585858;
 }
 
 #user_input{
@@ -61,4 +72,22 @@ body{
 
 .div_def_para{
     width: 100%;
+}
+
+#dl
+{
+    float:right;
+}
+
+#div_modif
+{
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+#sign
+{
+    float:right;
+    font-size:12px;
+    font-family:Rekha;
 }
