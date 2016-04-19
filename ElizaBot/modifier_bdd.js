@@ -141,7 +141,6 @@ ElizaBot.prototype.maintenance_bdd = function() {
 	var d = document.getElementById("div_def_submit_voir");
 	var div = document.getElementById("div_def");
 	var affiche = "Afficher définitions", cacher = "Cacher définitions";
-
 	if(d.value == affiche)
 	{
 		d.value = cacher;
@@ -149,23 +148,32 @@ ElizaBot.prototype.maintenance_bdd = function() {
 		var div2;
 		for(var i in this.ensemble_rep)
 		{
-			div2 = document.createElement("p");
+			div2 = document.createElement("div");
 			div2.setAttribute("class", "div_def_para");
+			div2.setAttribute("name", ""+i);
+
 			a = this.ensemble_rep[i];
+
 			text_cle = document.createElement("input");
 			text_cle.setAttribute("type", "text");
+			text_cle.setAttribute("name", ""+i);
 			text_cle.setAttribute("id", "div_def_cle");
 			text_cle.setAttribute("value", a.mots_cle);
+			text_cle.setAttribute("onkeyup", "Eliza.modifier_reponse(this.name, this)");
 
 			text_def = document.createElement("input");
 			text_def.setAttribute("type", "text");
+			text_def.setAttribute("name", ""+i);
 			text_def.setAttribute("id", "div_def_def");
 			text_def.setAttribute("value", a.ensemble_def);
+			text_def.setAttribute("onkeyup", "Eliza.modifier_reponse(this.name, this)");
 
 			text_dep = document.createElement("input");
 			text_dep.setAttribute("type", "text");
+			text_dep.setAttribute("name", ""+i);
 			text_dep.setAttribute("id", "div_def_dep");
 			text_dep.setAttribute("value", a.ensemble_dependance);
+			text_dep.setAttribute("onkeyup", "Eliza.modifier_reponse(this.name, this)");
 
 			div2.appendChild(text_cle);
 			div2.appendChild(text_def);
