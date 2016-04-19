@@ -24,6 +24,8 @@ ElizaBot.prototype.questionner_user = function(mot_clef)
 		else
 			resultat += dep.join(" ");
 	}
-
+	/* TODO : modifier "this.dernier_mot_clef" pour que ça coïncide
+	(Que ça ait un rapport avec ce qu'on vien de lui demander)
+	*/
 	return resultat;  
 }

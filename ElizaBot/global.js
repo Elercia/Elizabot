@@ -26,6 +26,7 @@ function Reponse(mots_cle, ensemble_def, ensemble_dependance)
 function ElizaBot(ens_rep)
 {
 	this.ensemble_rep = ens_rep;
+	this.dernier_mot_clef = "";
 }
 
 

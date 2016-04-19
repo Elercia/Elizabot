@@ -10,6 +10,7 @@ ElizaBot.prototype.donner_reponse = function()
 
 		//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
 		var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
+
 		//S'il y a plus d'un mot cle, on demandera à l'utilisateur de quel notion il veut parler
 		if (mot_cle.length>1)
 		{
@@ -23,17 +24,26 @@ ElizaBot.prototype.donner_reponse = function()
 			
 			//si la reponse existe
 			if (typeof reponse!="undefined") {
+
 				/*Si le mot clef fait parti du champ lexical de l'incompréhension et a 
 				donc pour definition "incompréhension" */
 				if (reponse.ensemble_def == "incomprehension")
 				{
-					var affichage = questionner(mot_cle);
+					//S'il n'a pas compris la notion, on va lui demander s'il connait les dépendances des notions
+					var affichage = this.questionner_user(this.dernier_mot_clef);
+				}
+				else if (reponse.ensemble_def == "exemple")
+				{
+					//s'il demande un exemple, on lui donne un exemple du dernier mot clef utilisé
+					var affichage = this.donner_exemple(this.dernier_mot_clef);
 				}
 				else
 				{
+					this.dernier_mot_clef = mot_cle;
 					var affichage = reponse.ensemble_def;
 				}
 				this.afficher_reponse(affichage);
+
 			}
 			else
 			{
