@@ -10,10 +10,9 @@ ElizaBot.prototype.donner_reponse = function()
 
 		//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
 		var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
-		if (mot_cle[0]==this.dernier_mot_cle[0])  //Si c'est le même mot cle que précedemment
+		if (comparer_tableau(mot_cle, this.dernier_mot_cle))  //Si c'est le même mot cle que précedemment
 		{
-			mot_cle = "SAME INPUT";
-			console.log(mot_cle);
+			mot_cle = ["sameinput"];
 		}
 
 		if (mot_cle.length>1) //S'il y a plus d'un mot cle, on demandera à l'utilisateur de quel notion il veut parler
@@ -42,7 +41,11 @@ ElizaBot.prototype.donner_reponse = function()
 				}
 				else
 				{
-					this.dernier_mot_cle = mot_cle;
+					if (mot_cle != "sameinput")
+					{
+						console.log("oui");
+						this.dernier_mot_cle = mot_cle;
+					}
 					var affichage = reponse.ensemble_def;
 				}
 				this.afficher_reponse(affichage);
@@ -79,9 +82,14 @@ ElizaBot.prototype.choisir_mot_cle = function(mot_cle)
 	this.afficher_reponse(affichage);
 }
 
+/**
+*Est appellée si la fonction donner_reponse n'a pas trouvé de réponse
+*/
 ElizaBot.prototype.pasTrouve = function()
 {
+	// 0 < proba < 1
 	proba = Math.random();
+	//Choisi au hasard une réponse
 	if (proba<0.25)
 	{
 		this.afficher_reponse("Je ne comprend pas");
@@ -100,7 +108,29 @@ ElizaBot.prototype.pasTrouve = function()
 	}
 }
 
-function comparer_tableau()
+/**
+*Compare deux tableaux
+*@param {Array} tab1 le premier tableau à comparer
+*@param {Array} tab2 le deuxième tableau à comparer
+*@return {boolean} retour true si les deux tableaux sont égaux, false sinon
+*/
+function comparer_tableau(tab1, tab2)
 {
-	
+	var retour = true;
+	if (tab1.length!=tab2.length)
+	{
+		retour = false;
+	}
+	else
+	{
+		for (var i = 0; i<tab1.length; i++)
+		{
+			if (tab1[i] != tab2[i])
+			{
+				retour=false;
+				return retour;
+			}
+		}
+	}
+	return retour;
 }
