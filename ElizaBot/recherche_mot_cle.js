@@ -7,7 +7,9 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	var tab_split;
 	
 	//On enlève les signes de ponctuation et les accents pour ne pas bloquer un mot clé
-	saisie_utilisateur = saisie_utilisateur.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ");	
+	saisie_utilisateur = saisie_utilisateur.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," ");
+	saisie_utilisateur = saisie_utilisateur.replace(/['"')]/g," ");
+	saisie_utilisateur = saisie_utilisateur.replace(/["'")]/g," ");
 	saisie_utilisateur = saisie_utilisateur.replace(/[âÄÆààáãäå]/g,"a");
 	saisie_utilisateur = saisie_utilisateur.replace(/[Çç]/g,"c");
 	saisie_utilisateur = saisie_utilisateur.replace(/[èéêëÊ]/g,"e");
@@ -38,20 +40,23 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	        }
 	    }
 	}
-	var tmp;
-	for(var l = 0; l < retour.length; l++)
-	{
-	    tmp = retour[l];
-	    for(var m = (l+1); m < retour.length; m++)
-	    {
-	        if(tmp === retour[m])
-	        {
-	            retour.splice(m, 1);
-	        }
-	    }
-	}
-	console.log(retour);
+
+    retour.sort(); //Tri des éléments dans ordre alphabétique
+    
+    for(var l = retour.length; l > -1; l--)
+    {
+        for( var m = (l-1); m > -1; m--)
+        {
+            if(retour[l] === retour[m])
+            {
+                retour.splice(l,1);
+            }
+        }
+    }
+    
+    
 	
-	//Retourner le tableau avec les mots clés
-	return retour;
+	alert(retour); //Affiche le tableau de retour dans une fenêtre
+	console.log(retour); //Affiche le tableau de retour dans la console
+	return retour;//Retourner le tableau avec les mots clés
 }
