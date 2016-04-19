@@ -26,16 +26,12 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	saisie_utilisateur = saisie_utilisateur.replace(/[ôÒÓÔÕÖØðòóõö]/g,"o"); //Supprime 'O' spéciaux
 	saisie_utilisateur = saisie_utilisateur.replace(/[ûùÙÚÛÜùúûü]/g,"u"); //Supprime 'U' spéciaux
 	saisie_utilisateur = saisie_utilisateur.replace(/[Ýýÿ]/g,"y"); //Supprime 'Y' spéciaux	
-	console.log(saisie_utilisateur);
-	
 	
 	//On met l'ensemble de la phrase en miniscule pour être en concordance avec la base
 	minuscule = saisie_utilisateur.toLowerCase();
-	console.log(minuscule);
 	
 	//On met la chaîne de caractère sous forme de tableau de String
 	tab_split = minuscule.split(espace);
-    console.log(tab_split);
 	
 	//Parcourir les mots du tableau et rechercher si = tableau mot clé
 	for(var i = 0; i < tab_split.length; i++) //Parcours tableau utilisateur
@@ -65,6 +61,5 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
         }
     }
     
-	console.log(retour); //Affiche le tableau de retour dans la console
 	return retour;//Retourner le tableau avec les mots clés
 }
