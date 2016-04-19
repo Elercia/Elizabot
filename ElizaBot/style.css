@@ -1,16 +1,16 @@
 body{
     padding:0;
     margin:30px;
-    background-color:#CEE3F6;
+    background-image:url("images/background.jpeg");
 }
 
-h1
+#titre
 {
     font-size:35px;
     text-align:center;
-    font-family:Rekha;
+    font-family:Verdana;
     font-style:italic;
-    color:#585858;
+    color:#D8D8D8;
 }
 
 #historique{
@@ -21,7 +21,7 @@ h1
     max-width: 50%;
     max-height: 70%;
     resize: none;
-    background-color:#A9D0F5;
+    background-color:#E6E6E6;
     color:#585858;
 }
 
@@ -40,11 +40,16 @@ h1
 #div_def_submit_voir{
     width: 100%;
     border: none;
-    background-color: white;
+    background-color: #E6E6E6;
 }
 
 #div_def_submit_voir:hover{
-    border: solid 0.5px blue;
+    border: solid 0.5px #585858;
+}
+
+#file_user_export
+{
+    color:#D8D8D8;
 }
 
 #div_def

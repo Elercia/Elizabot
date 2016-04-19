@@ -16,14 +16,32 @@ function Reponse(mots_cle, ensemble_def, ensemble_dependance)
 	this.ensemble_dependance = ensemble_dependance;
 }
 
+/**
+ * { Methode permettant de changer un mots d'un reponse }
+ *
+ * @method     changer_cle
+ * @param      {string}  argv    { le nouveau mot cle }
+ */
 Reponse.prototype.changer_cle = function(argv) {
 	this.mots_cle = argv;
 };
 
+/**
+ * { Methode permettant de changer des définitions }
+ *
+ * @method     changer_def
+ * @param      {string}  argv    { la(les) nouvelle def }
+ */
 Reponse.prototype.changer_def = function(argv) {
 	this.ensemble_def = argv;
 };
 
+/**
+ * { Methode permettant de changer des dépendances }
+ *
+ * @method     changer_dep
+ * @param      {String}  argv    { la (les) nouvelles dep }
+ */
 Reponse.prototype.changer_dep = function(argv) {
 	this.ensemble_dependance = argv;
 };
@@ -74,6 +92,13 @@ ElizaBot.prototype.ajouter_reponse = function(rep) {
 };
 
 
+/**
+ * Fonction permettant de modifier une reponse en fonction de son index et d'un input html
+ *
+ * @method     modifier_reponse
+ * @param      {string}  argv1   { l'index en string }
+ * @param      {HTML input}  argv2   { le imput type text que l'on a modifié }
+ */
 ElizaBot.prototype.modifier_reponse = function(argv1, argv2) {
 	if(typeof argv1 == "string")
 	{
@@ -110,7 +135,7 @@ ElizaBot.prototype.afficher_reponse = function(rep) {
 
 
 var Eliza = new ElizaBot([
-new Reponse(["cle1", "cle11"], "reponse1", "graphe"),//déclaration objet reponse
+new Reponse(["cle1", "cle11"], "reponse1", "graphe"),// déclaration objet reponse
 new Reponse(["cle2", "cle22"], "reponse2", ["cle1", "cle11"]),
 new Reponse(["cle3", "cle33"], "reponse3", ["cle2", "cle22"]),
 new Reponse(["sameinput"], "Il me semble que vous vous répetez", []),
