@@ -25,3 +25,40 @@ body{
 #user_input #user_input_text{
     width: 40%;
 }
+
+#div_def_submit_voir{
+    width: 100%;
+    border: none;
+    background-color: white;
+}
+
+#div_def_submit_voir:hover{
+    border: solid 0.5px blue;
+}
+
+#div_def
+{
+    width: 100%;
+}
+
+#div_def_cle
+{
+    margin: 3px;
+    width: 32%;
+}
+
+#div_def_def
+{
+    margin: 3px;
+    width: 32%;
+}
+
+#div_def_dep
+{
+    margin: 3px;
+    width: 32%;
+}
+
+.div_def_para{
+    width: 100%;
+}

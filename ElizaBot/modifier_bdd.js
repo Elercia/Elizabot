@@ -117,14 +117,45 @@ ElizaBot.prototype.exporter_bdd = function()
  * @method     maintenance_bdd
  */
 ElizaBot.prototype.maintenance_bdd = function() {
-	var text, a;
-	var div = document.getElementById("div_modif");
-	for(var i in this.ensemble_rep)
+	var d = document.getElementById("div_def_submit_voir");
+	var div = document.getElementById("div_def");
+	var affiche = "Afficher définitions", cacher = "Cacher définitions";
+
+	if(d.value == affiche)
 	{
-		a = this.ensemble_rep[i];
-		text = document.createElement("input");
-		text.setAttribute("type", "text");
-		text.setAttribute("value", a.mots_cle);
-		div.appendChild(text);
+		d.value = cacher;
+		var text_cle, text_def, text_dep, a;
+		var div2;
+		for(var i in this.ensemble_rep)
+		{
+			div2 = document.createElement("p");
+			div2.setAttribute("class", "div_def_para");
+			a = this.ensemble_rep[i];
+			text_cle = document.createElement("input");
+			text_cle.setAttribute("type", "text");
+			text_cle.setAttribute("id", "div_def_cle");
+			text_cle.setAttribute("value", a.mots_cle);
+
+			text_def = document.createElement("input");
+			text_def.setAttribute("type", "text");
+			text_def.setAttribute("id", "div_def_def");
+			text_def.setAttribute("value", a.ensemble_def);
+
+			text_dep = document.createElement("input");
+			text_dep.setAttribute("type", "text");
+			text_dep.setAttribute("id", "div_def_dep");
+			text_dep.setAttribute("value", a.ensemble_dependance);
+
+			div2.appendChild(text_cle);
+			div2.appendChild(text_def);
+			div2.appendChild(text_dep);
+			div.appendChild(div2);
+		}
+	}
+	else if(d.value = cacher)
+	{
+		//on clear le div
+		d.value = affiche;
+		div.innerHTML = "";
 	}
 };
