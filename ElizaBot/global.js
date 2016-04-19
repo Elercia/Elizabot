@@ -26,7 +26,7 @@ function Reponse(mots_cle, ensemble_def, ensemble_dependance)
 function ElizaBot(ens_rep)
 {
 	this.ensemble_rep = ens_rep;
-	this.dernier_mot_clef = "";
+	this.dernier_mot_cle = "";
 }
 
 
@@ -79,7 +79,8 @@ ElizaBot.prototype.afficher_reponse = function(rep) {
 var Eliza = new ElizaBot([
 new Reponse(["cle1", "cle11"], "reponse1", "graphe"),//déclaration objet reponse
 new Reponse(["cle2", "cle22"], "reponse2", ["cle1", "cle11"]),
-new Reponse(["cle3", "cle33"], "reponse3", ["cle2", "cle22"])
+new Reponse(["cle3", "cle33"], "reponse3", ["cle2", "cle22"]),
+new Reponse(["SAME INPUT"], "Il me semble que vous vous répetez", []),
 ]);
 
 /**

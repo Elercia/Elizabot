@@ -10,36 +10,39 @@ ElizaBot.prototype.donner_reponse = function()
 
 		//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
 		var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
+		if (mot_cle[0]==this.dernier_mot_cle[0])  //Si c'est le même mot cle que précedemment
+		{
+			mot_cle = "SAME INPUT";
+			console.log(mot_cle);
+		}
 
-		//S'il y a plus d'un mot cle, on demandera à l'utilisateur de quel notion il veut parler
-		if (mot_cle.length>1)
+		if (mot_cle.length>1) //S'il y a plus d'un mot cle, on demandera à l'utilisateur de quel notion il veut parler
 		{
 			this.choisir_mot_cle(mot_cle);
 		}
-		//Sinon on trouve la réponse pour lui envoyer
-		else
+		else //Sinon on trouve la réponse pour lui envoyer
 		{
 			//on recherche la reponse (motclef/ensembledef/ensembledependance) correspondant au mot clef
 			var reponse = this.rechercher_correspondance(mot_cle);
 			
-			//si la reponse existe
-			if (typeof reponse!="undefined") {
+			if (typeof reponse!="undefined")	//si la reponse existe
+			{
 
 				/*Si le mot clef fait parti du champ lexical de l'incompréhension et a 
 				donc pour definition "incompréhension" */
 				if (reponse.ensemble_def == "incomprehension")
 				{
 					//S'il n'a pas compris la notion, on va lui demander s'il connait les dépendances des notions
-					var affichage = this.questionner_user(this.dernier_mot_clef);
+					var affichage = this.questionner_user(this.dernier_mot_cle);
 				}
 				else if (reponse.ensemble_def == "exemple")
 				{
 					//s'il demande un exemple, on lui donne un exemple du dernier mot clef utilisé
-					var affichage = this.donner_exemple(this.dernier_mot_clef);
+					var affichage = this.donner_exemple(this.dernier_mot_cle);
 				}
 				else
 				{
-					this.dernier_mot_clef = mot_cle;
+					this.dernier_mot_cle = mot_cle;
 					var affichage = reponse.ensemble_def;
 				}
 				this.afficher_reponse(affichage);
@@ -95,4 +98,9 @@ ElizaBot.prototype.pasTrouve = function()
 	{
 		this.afficher_reponse("Dis m'en plus");
 	}
+}
+
+function comparer_tableau()
+{
+	
 }
