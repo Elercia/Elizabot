@@ -16,6 +16,18 @@ function Reponse(mots_cle, ensemble_def, ensemble_dependance)
 	this.ensemble_dependance = ensemble_dependance;
 }
 
+Reponse.prototype.changer_cle = function(argv) {
+	this.mots_cle = argv;
+};
+
+Reponse.prototype.changer_def = function(argv) {
+	this.ensemble_def = argv;
+};
+
+Reponse.prototype.changer_dep = function(argv) {
+	this.ensemble_dependance = argv;
+};
+
 
 /**
  * Permet de créer la class ElizaBot
@@ -59,6 +71,27 @@ ElizaBot.prototype.rechercher_correspondance = function(mots_cle)
  */
 ElizaBot.prototype.ajouter_reponse = function(rep) {
 	this.ensemble_rep.push(rep);
+};
+
+
+ElizaBot.prototype.modifier_reponse = function(argv1, argv2) {
+	if(typeof argv1 == "string")
+	{
+		var num = Number(argv1);
+		if(argv2.id == "div_def_cle")
+		{
+			this.ensemble_rep[num].changer_cle(argv2.value.split(","));
+		}
+		else if(argv2.id == "div_def_def")
+		{
+			this.ensemble_rep[num].changer_def(argv2.value.split(","));
+		}
+		else if(argv2.id == "div_def_dep")
+		{
+			this.ensemble_rep[num].changer_dep(argv2.value.split(","));
+		}
+		//this.ensemble_rep[num]=;
+	}
 };
 
 /**
