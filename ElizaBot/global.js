@@ -57,10 +57,7 @@ ElizaBot.prototype.rechercher_correspondance = function(mots_cle)
  * @param      {Reponse}  rep     { une reponse a ajouter }
  */
 ElizaBot.prototype.ajouter_reponse = function(rep) {
-	if(typeof rep === "Object")
-	{
-		this.ensemble_rep.push(rep);
-	}
+	this.ensemble_rep.push(rep);
 };
 
 /**
