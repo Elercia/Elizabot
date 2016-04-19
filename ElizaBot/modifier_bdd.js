@@ -180,6 +180,11 @@ ElizaBot.prototype.maintenance_bdd = function() {
 			div2.appendChild(text_dep);
 			div.appendChild(div2);
 		}
+		var bout = document.createElement("input");
+		bout.setAttribute("type", "submit");
+		bout.setAttribute("value", "Nouvelle définition");
+		bout.setAttribute("onclick", "Eliza.ajouter_reponse(new Reponse('','',''))");
+		div.appendChild(bout);
 	}
 	else if(d.value = cacher)
 	{

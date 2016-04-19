@@ -89,6 +89,9 @@ ElizaBot.prototype.rechercher_correspondance = function(mots_cle)
  */
 ElizaBot.prototype.ajouter_reponse = function(rep) {
 	this.ensemble_rep.push(rep);
+	var actu = document.getElementById("div_def_submit_voir");
+	actu.click();
+	actu.click();
 };
 
 
