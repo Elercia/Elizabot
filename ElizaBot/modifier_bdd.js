@@ -99,7 +99,7 @@ ElizaBot.prototype.exporter_bdd = function()
 		result += "</dep>\n";
 		result += "</data>\n"
 	}
-
+	result = result.substring(0, result.length-1);
 	//Création d'un objet LIEN
     var bu = document.getElementById('down');
     bu.setAttribute("href", "data:text/plain;charset=utf-8,"+encodeURIComponent(result));
