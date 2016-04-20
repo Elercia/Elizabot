@@ -7,6 +7,7 @@
  * @param      {string}  argv    { le contenue du fichier chargé }
  */
 ElizaBot.prototype.modifier_bdd = function(argv) {
+	this.ensemble_rep = [];
 	var data = argv.split("</data>");//on insole chaque reponse
 	var result, tmp;
 	var a=0;
