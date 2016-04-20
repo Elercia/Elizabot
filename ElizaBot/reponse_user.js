@@ -10,9 +10,9 @@ ElizaBot.prototype.donner_reponse = function()
 
 		//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
 		var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
-		
+
 		//Si c'est le même mot cle que précedemment
-		if ((comparer_tableau(mot_cle, this.derniers_mots_cles)) && (this.derniers_mots_cles.length!=0))
+		if (((String(mot_cle) === String(this.derniers_mots_cles[this.derniers_mots_cles.length-1])) && (this.derniers_mots_cles.length!=0)))
 		{
 			mot_cle = ["sameinput"];
 		}
@@ -43,10 +43,9 @@ ElizaBot.prototype.donner_reponse = function()
 				}
 				else
 				{
-					if (mot_cle != ["sameinput"])
+					if (mot_cle != "sameinput")
 					{
-						this.derniers_mots_cles.push(mot_cle[0]);
-						console.log(this.derniers_mots_cles);
+						this.derniers_mots_cles.push(mot_cle);
 					}
 					var affichage = reponse.ensemble_def;
 				}
