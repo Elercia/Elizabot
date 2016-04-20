@@ -15,7 +15,7 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	var phrase_string; //String
 	
 	//On enlève les signes de ponctuation et les accents pour ne pas bloquer un mot clé
-	saisie_utilisateur = saisie_utilisateur.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," "); //Supprime ponctuation
+	saisie_utilisateur = saisie_utilisateur.replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g," "); //Supprime ponctuation
 	saisie_utilisateur = saisie_utilisateur.replace(/['"')]/g," "); //Supprime "
 	saisie_utilisateur = saisie_utilisateur.replace(/["'")]/g," "); //Supprime '
 	saisie_utilisateur = saisie_utilisateur.replace(/[âÄÆààáãäåÀÁ]/g,"a"); //Supprime 'A' spéciaux
