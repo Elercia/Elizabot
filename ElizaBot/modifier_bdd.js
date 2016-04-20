@@ -64,7 +64,7 @@ ElizaBot.prototype.maintenance_bdd = function() {
 			text_cle.setAttribute("onkeyup", "Eliza.modifier_reponse(this.name, this)");
 
 			text_def = document.createElement("input");
-			text_def.setAttribute("type", "text");
+			text_cle.setAttribute("type", "text");
 			text_def.setAttribute("name", ""+i);
 			text_def.setAttribute("id", "div_def_def");
 			text_def.setAttribute("value", a.ensemble_def);
@@ -79,6 +79,7 @@ ElizaBot.prototype.maintenance_bdd = function() {
 
 			supprimer = document.createElement("input");
 			supprimer.setAttribute("type", "submit");
+			supprimer.setAttribute("id", "div_def_supprimer");
 			supprimer.setAttribute("value", "Supprimer");
 			supprimer.setAttribute("name", ""+i);
 			supprimer.setAttribute("onclick", "Eliza.supprimer_def(this.name)");
