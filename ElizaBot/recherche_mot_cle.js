@@ -12,7 +12,7 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	var minuscule; //String
 	var espace = " "; //String
 	var retour = []; //Array
-	var tab_split = []; //Array
+	var phrase_string; //String
 	
 	//On enlève les signes de ponctuation et les accents pour ne pas bloquer un mot clé
 	saisie_utilisateur = saisie_utilisateur.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g," "); //Supprime ponctuation
@@ -30,8 +30,28 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	//On met l'ensemble de la phrase en miniscule pour être en concordance avec la base
 	minuscule = saisie_utilisateur.toLowerCase();
 	
+	phrase_string = minuscule;
+	
+	
+	for(var j = 0; j < this.ensemble_rep.length; j++)
+	{
+	    for(var k in(this.ensemble_rep[j]).mots_cle)
+	    {
+	        var n = phrase_string.indexOf(this.ensemble_rep[j].mots_cle[k]);
+	        
+	        if(n != -1)
+	        {
+	            retour.push([this.ensemble_rep[j].mots_cle[k]]); //Si Ok ajout dans tableau de retour
+	        }
+	    }
+	}
+	
+	
+	
+	
+	
 	//On met la chaîne de caractère sous forme de tableau de String
-	tab_split = minuscule.split(espace);
+	/*tab_split = minuscule.split(espace);
 	
 	//Parcourir les mots du tableau et rechercher si = tableau mot clé
 	for(var i = 0; i < tab_split.length; i++) //Parcours tableau utilisateur
@@ -41,14 +61,14 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	        for(var k in (this.ensemble_rep[j]).mots_cle) //Parcours tableau des mots clés
 	        {
 	            if((tab_split[i]) === (this.ensemble_rep[j].mots_cle[k])) //Recherche correspondance
-	            {	
+	            {
 	                retour.push(tab_split[i]); //Si Ok ajout dans tableau de retour
 	            }
 	        }
 	    }
-	}
+	}*/
 
-    retour.sort(); //Tri des éléments dans ordre alphabétique
+    /*retour.sort(); //Tri des éléments dans ordre alphabétique*/
     
     for(var l = retour.length; l > -1; l--) //Parcours du tableau en partant de la fin
     {
@@ -61,5 +81,7 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
         }
     }
     
+    alert(retour);
+    console.log(retour);
 	return retour;//Retourner le tableau avec les mots clés
 }
