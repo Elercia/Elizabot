@@ -57,6 +57,7 @@ function ElizaBot(ens_rep)
 {
 	this.ensemble_rep = ens_rep;
 	this.derniers_mots_cles = [];
+	this.derniers_mots_cles_brut = [];
 }
 
 

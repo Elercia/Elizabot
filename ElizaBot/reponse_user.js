@@ -10,14 +10,28 @@ ElizaBot.prototype.donner_reponse = function()
 
 		//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
 		var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
+		this.derniers_mots_cles_brut.push(mot_cle);
 
-		//Si c'est le même mot cle que précedemment
-		if (((String(mot_cle) === String(this.derniers_mots_cles[this.derniers_mots_cles.length-1])) && (this.derniers_mots_cles.length!=0)))
+		//Si les nouveaux mots cles sont identiques à ceux de la demande précédente 
+		if (((String(mot_cle) === String(this.derniers_mots_cles_brut[this.derniers_mots_cles_brut.length-2])) && (this.derniers_mots_cles.length!=0)))
 		{
 			mot_cle = ["sameinput"];
 		}
 
-		if (mot_cle.length>1) //S'il y a plus d'un mot cle, on demandera à l'utilisateur de quel notion il veut parler
+		//Traitement des mots reçus pour n'avoir que les mots cles les plus long ex : "graphe/ graphe connexe"
+		for (i in mot_cle)
+		{
+			for (j in mot_cle)
+			{
+				if ((String(mot_cle[j]).search(mot_cle[i]) != -1) && mot_cle[i]!=mot_cle[j])
+				{
+					mot_cle.splice(i,1);
+				}
+			}
+		}
+
+		//S'il y a plus d'un mot clé, on demandera à l'utilisateur de quel notion il veut parler
+		if (mot_cle.length>1)
 		{
 			this.choisir_mot_cle(mot_cle);
 		}
