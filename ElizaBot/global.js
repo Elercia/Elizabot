@@ -164,7 +164,7 @@ new Reponse(["sameinput"], "Il me semble que vous vous répetez", []),
 function chargement_page(){
 	document.getElementById("historique").value = "[SOLEN] : Bonjour";
 	document.getElementById("user_input_text").value = "";
-
+	admin(false);
 	//fonction initialisation export bdd
 	var f = document.getElementById("file_user_export");
 	f.onchange = function(){
