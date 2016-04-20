@@ -25,6 +25,32 @@ body{
     color:#585858;
 }
 
+a
+{
+    text-decoration:none;
+    color:#D8D8D8;
+}
+
+#menu
+{
+    color:#D8D8D8;
+	padding:0;
+	height:80px;
+	margin-top:8px;
+	font-family:Verdana;
+}
+
+#menu li
+{
+    float:left;
+	display:inline-block;
+	font-size:22px;
+	text-align:center;
+	width:33%;
+	text-transform:uppercase;
+	text-decoration:none;
+}
+
 #user_input{
     padding-top:10px;
     width: auto;

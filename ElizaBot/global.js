@@ -56,7 +56,7 @@ Reponse.prototype.changer_dep = function(argv) {
 function ElizaBot(ens_rep)
 {
 	this.ensemble_rep = ens_rep;
-	this.dernier_mot_cle = "";
+	this.derniers_mots_cles = [];
 }
 
 
