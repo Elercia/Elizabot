@@ -155,8 +155,12 @@ ElizaBot.prototype.afficher = function(affichage)
  * @param      {string}  rep     { la reponse à afficher }
  */
 ElizaBot.prototype.afficher_reponse = function(rep) {
-	document.getElementById("historique").value += "\n[USER]  : " + document.getElementById("user_input_text").value;
-	document.getElementById("historique").value += "\n[SOLEN] : " + rep;
+
+
+    
+
+	document.getElementById("historique").value += "\n[" + nomUser + "]" + espace1 + " : " + document.getElementById("user_input_text").value;
+	document.getElementById("historique").value += "\n[SOLEN]" + espace + " : " + rep;
 	document.getElementById("user_input_text").value = "";
 	var textArea = document.getElementById('historique');
     textArea.scrollTop = textArea.scrollHeight;
@@ -169,13 +173,72 @@ new Reponse(["comprend pas", "pas compris"], "incomprehension", []),
 new Reponse(["exemple"], "exemple", [])
 ]);
 
+
+    var nomUser; //Variable nom user
+    var espace = "";
+    var espace1 = "";        
+    var nbespace;
+    var nbespace1;
+    
+    
 /**
  * Fonction chargé au démarrage de la page
  *
  * @method     chargement_page
- */
+ */ 
 function chargement_page(){
-	document.getElementById("historique").value = "[SOLEN] : Bonjour";
+    
+    var okLong = false;
+    
+    while(okLong === false)
+    {
+        nomUser = prompt("Quelle est votre nom ?");
+        if(nomUser.length < 1)
+        {
+            alert("Veuillez ne pas rentrez un prénom vide !");
+            okLong = false;
+        }
+        else if(nomUser.length > 20)
+        {
+            alert("Vous rentrez un prénom trop long !");
+            okLong = false;
+        }
+        else
+        {
+            alert("Bien, c'est un beau prénom !");
+            okLong = true
+        }
+    }
+
+    if((nomUser.length) > (5))
+    {
+        nbespace = (nomUser.length) - 5;
+        for(var z = 0; z < nbespace; z++)
+        {
+            espace += " ";
+        }
+    }
+    else if((nomUser.length) < (5))
+    {
+        nbespace1 = 5 - (nomUser.length);
+        for(var y = 0; y < nbespace1; y++)
+        {
+            espace1 += " ";
+        }
+    }
+    console.log(espace);
+    console.log(espace1);
+    
+	if((nomUser.length) > (5))
+	{
+	    document.getElementById("historique").value = "[SOLEN]" + espace + " : Bonjour";
+	}
+	
+	else
+	{
+	    document.getElementById("historique").value = "[SOLEN] : Bonjour";
+	}
+	
 	document.getElementById("user_input_text").value = "";
 	admin(false);
 	//fonction initialisation export bdd
