@@ -23,7 +23,6 @@ ElizaBot.prototype.modifier_bdd = function(argv) {
  */
 ElizaBot.prototype.exporter_bdd = function()
 {
-	
 	var result;
 	result = JSON.stringify(this.ensemble_rep);
 	//Création d'un objet LIEN
@@ -47,9 +46,9 @@ ElizaBot.prototype.maintenance_bdd = function() {
 	if(d.value == affiche)
 	{
 		d.value = cacher;
-		var text_cle, text_def, text_dep, a;
+		var text_cle, text_def, text_dep, a, supprimer;
 		var div2;
-		for(var i in this.ensemble_rep)
+		for(var i = 3; i< this.ensemble_rep.length ; i++)
 		{
 			div2 = document.createElement("div");
 			div2.setAttribute("class", "div_def_para");
@@ -78,9 +77,16 @@ ElizaBot.prototype.maintenance_bdd = function() {
 			text_dep.setAttribute("value", a.ensemble_dependance);
 			text_dep.setAttribute("onkeyup", "Eliza.modifier_reponse(this.name, this)");
 
+			supprimer = document.createElement("input");
+			supprimer.setAttribute("type", "submit");
+			supprimer.setAttribute("value", "Supprimer");
+			supprimer.setAttribute("name", ""+i);
+			supprimer.setAttribute("onclick", "Eliza.supprimer_def(this.name)");
+
 			div2.appendChild(text_cle);
 			div2.appendChild(text_def);
 			div2.appendChild(text_dep);
+			div2.appendChild(supprimer);
 			div.appendChild(div2);
 		}
 		var bout = document.createElement("input");
@@ -95,4 +101,11 @@ ElizaBot.prototype.maintenance_bdd = function() {
 		d.value = affiche;
 		div.innerHTML = "";
 	}
+};
+
+ElizaBot.prototype.supprimer_def = function(argv){
+	this.ensemble_rep.splice(Number(argv), 1);
+	var actu = document.getElementById("div_def_submit_voir");
+	actu.click();
+	actu.click();
 };
