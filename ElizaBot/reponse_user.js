@@ -12,7 +12,7 @@ ElizaBot.prototype.donner_reponse = function()
 		var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
 		
 		//Si c'est le même mot cle que précedemment
-		if ((comparer_tableau(mot_cle, this.dernier_mot_cle)) && (this.dernier_mot_cle!=""))
+		if ((comparer_tableau(mot_cle, this.derniers_mots_cles)) && (this.derniers_mots_cles.length!=0))
 		{
 			mot_cle = ["sameinput"];
 		}
@@ -33,20 +33,20 @@ ElizaBot.prototype.donner_reponse = function()
 				donc pour definition "incompréhension" */
 				if (reponse.ensemble_def == "incomprehension")
 				{
-					//S'il n'a pas compris la notion, on va lui demander s'il connait les dépendances des notions
-					var affichage = this.questionner_user(this.dernier_mot_cle);
+					//S'il n'a pas compris la notion, on va lui demander s'il connait les dépendances des notions 
+					var affichage = this.questionner_user(this.derniers_mots_cles);
 				}
 				else if (reponse.ensemble_def == "exemple")
 				{
 					//s'il demande un exemple, on lui donne un exemple du dernier mot clef utilisé
-					var affichage = this.donner_exemple(this.dernier_mot_cle);
+					var affichage = this.donner_exemple(this.derniers_mots_cles);
 				}
 				else
 				{
-					if (mot_cle != "sameinput")
+					if (mot_cle != ["sameinput"])
 					{
-						console.log("oui");
-						this.dernier_mot_cle = mot_cle;
+						this.derniers_mots_cles.push(mot_cle[0]);
+						console.log(this.derniers_mots_cles);
 					}
 					var affichage = reponse.ensemble_def;
 				}
