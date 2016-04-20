@@ -18,14 +18,15 @@ ElizaBot.prototype.questionner_user = function(mot_clef)
 	}
 	else
 	{
-		var dep = rep1.ensemble_dependance;//on recupere ces dépendances
+		var dep = rep1.ensemble_dependance;//on récupère ces dépendances
 		if(typeof dep[0] === "Array")
 			resultat = dep[0].join(" ");
 		else
 			resultat += dep.join(" ");
 	}
 	/* TODO : modifier "this.dernier_mot_clef" pour que ça coïncide
-	(Que ça ait un rapport avec ce qu'on vien de lui demander)
-	*/
+	(Que ça ait un rapport avec ce qu'on vient de lui demander)*/
+	this.dernier_mot_clef;
+
 	return resultat;  
 }
