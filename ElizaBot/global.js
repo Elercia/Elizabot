@@ -208,6 +208,7 @@ function chargement_page(){
             alert("Bien, c'est un beau prénom !");
             okLong = true
         }
+        nomUser = nomUser.toUpperCase();
     }
 
     if((nomUser.length) > (5))
