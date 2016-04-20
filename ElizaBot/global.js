@@ -226,8 +226,6 @@ function chargement_page(){
             espace1 += " ";
         }
     }
-    console.log(espace);
-    console.log(espace1);
     
 	if((nomUser.length) > (5))
 	{
