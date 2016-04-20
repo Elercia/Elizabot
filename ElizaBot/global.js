@@ -186,3 +186,16 @@ function chargement_page(){
 		fr.readAsText(file);
 	};
 }
+
+
+/**
+ * Affiche ou non le boutton des définition
+ *
+ * @method     admin
+ * @param      {Boolean}  bool    { afficher ou non }
+ */
+function admin(bool)
+{
+	document.getElementById("div_def_submit_voir").style.display = (bool)? "block": "none";
+	document.getElementById("div_def").style.display = (bool)? "block": "none";
+}
