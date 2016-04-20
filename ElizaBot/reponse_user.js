@@ -3,75 +3,96 @@
 */											
 ElizaBot.prototype.donner_reponse = function()
 {
-	if (document.getElementById("user_input_text").value != "")
+	var saisie_utilisateur = document.getElementById("user_input_text").value;
+
+	if (saisie_utilisateur[0] != "/")
 	{
-		//récupere la saisie de l'utilisateur
-		var saisie_utilisateur = document.getElementById("user_input_text").value;
-		this.derniers_messages.push(saisie_utilisateur);
-
-		//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
-		var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
-
-		//Si les nouveaux mots cles sont identiques à ceux de la demande précédente 
-		if ((saisie_utilisateur == this.derniers_messages[this.derniers_messages.length-2]) && (this.derniers_messages.length!=0))
+		if (saisie_utilisateur != "")
 		{
-			mot_cle = ["sameinput"];
-		}
+			//récupere la saisie de l'utilisateur
+			
+			this.derniers_messages.push(saisie_utilisateur);
 
-		//Traitement des mots reçus pour n'avoir que les mots cles les plus long ex : "graphe/ graphe connexe"
-		for (i in mot_cle)
-		{
-			for (j in mot_cle)
+			//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
+			var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
+
+			//Si les nouveaux mots cles sont identiques à ceux de la demande précédente 
+			if ((saisie_utilisateur == this.derniers_messages[this.derniers_messages.length-2]) && (this.derniers_messages.length!=0))
 			{
-				if ((String(mot_cle[j]).search(mot_cle[i]) != -1) && mot_cle[i] != mot_cle[j])
+				mot_cle = ["sameinput"];
+			}
+
+			//Traitement des mots reçus pour n'avoir que les mots cles les plus long ex : "graphe/ graphe connexe"
+			for (i in mot_cle)
+			{
+				for (j in mot_cle)
 				{
-					mot_cle.splice(i,1);
+					if ((String(mot_cle[j]).search(mot_cle[i]) != -1) && mot_cle[i] != mot_cle[j])
+					{
+						mot_cle.splice(i,1);
+					}
 				}
 			}
-		}
 
-		//S'il y a plus d'un mot clé, on demandera à l'utilisateur de quel notion il veut parler
-		if (mot_cle.length>1)
-		{
-			this.choisir_mot_cle(mot_cle);
-		}
-		else //Sinon on trouve la réponse pour lui envoyer
-		{
-			//on recherche la reponse (motclef/ensembledef/ensembledependance) correspondant au mot clef
-			var reponse = this.rechercher_correspondance(mot_cle);
-			
-			if (typeof reponse!="undefined")	//si la reponse existe
+			//S'il y a plus d'un mot clé, on demandera à l'utilisateur de quel notion il veut parler
+			if (mot_cle.length>1)
 			{
+				this.choisir_mot_cle(mot_cle);
+			}
+			else //Sinon on trouve la réponse pour lui envoyer
+			{
+				//on recherche la reponse (motclef/ensembledef/ensembledependance) correspondant au mot clef
+				var reponse = this.rechercher_correspondance(mot_cle);
+				
+				if (typeof reponse!="undefined")	//si la reponse existe
+				{
 
-				/*Si le mot clef fait parti du champ lexical de l'incompréhension et a 
-				donc pour definition "incompréhension" */
-				if (reponse.ensemble_def == "incomprehension")
-				{
-					//S'il n'a pas compris la notion, on va lui demander s'il connait les dépendances des notions 
-					var affichage = this.questionner_user(this.derniers_mots_cles);
-				}
-				else if (reponse.ensemble_def == "exemple")
-				{
-					//s'il demande un exemple, on lui donne un exemple du dernier mot clef utilisé
-					var affichage = this.donner_exemple(this.derniers_mots_cles);
+					/*Si le mot clef fait parti du champ lexical de l'incompréhension et a 
+					donc pour definition "incompréhension" */
+					if (reponse.ensemble_def == "incomprehension")
+					{
+						//S'il n'a pas compris la notion, on va lui demander s'il connait les dépendances des notions 
+						var affichage = this.questionner_user(this.derniers_mots_cles);
+					}
+					else if (reponse.ensemble_def == "exemple")
+					{
+						//s'il demande un exemple, on lui donne un exemple du dernier mot clef utilisé
+						var affichage = this.donner_exemple(this.derniers_mots_cles);
+					}
+					else
+					{
+						if (mot_cle != "sameinput")
+						{
+							this.derniers_mots_cles.push(mot_cle);
+						}
+						var affichage = reponse.ensemble_def;
+					}
+					this.afficher_reponse(affichage);
+
 				}
 				else
 				{
-					if (mot_cle != "sameinput")
-					{
-						this.derniers_mots_cles.push(mot_cle);
-					}
-					var affichage = reponse.ensemble_def;
+					this.pasTrouve();
 				}
-				this.afficher_reponse(affichage);
-
 			}
-			else
-			{
-				this.pasTrouve();
-			}
+			
 		}
-		
+	}
+	else
+	{
+		if (saisie_utilisateur.endsWith("admin"))
+		{
+			admin(true);
+			this.afficher("# INFO # L'interface administrateur a bien été dévoilée");
+			console.log("sorti");
+
+		}
+		else if (saisie_utilisateur.endsWith("adminoff"))
+		{
+			admin(false);
+			this.afficher("# INFO # L'interface administrateur à été cachée");
+		}
+		document.getElementById("user_input_text").value = "";
 	}
 }
 /**
@@ -123,12 +144,14 @@ ElizaBot.prototype.pasTrouve = function()
 	}
 }
 
+
 /**
 *Compare deux tableaux
 *@param {Array} tab1 le premier tableau à comparer
 *@param {Array} tab2 le deuxième tableau à comparer
 *@return {boolean} retour true si les deux tableaux sont égaux, false sinon
 */
+/*
 function comparer_tableau(tab1, tab2)
 {
 	var retour = true;
@@ -149,3 +172,4 @@ function comparer_tableau(tab1, tab2)
 	}
 	return retour;
 }
+*/

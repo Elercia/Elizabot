@@ -135,10 +135,24 @@ ElizaBot.prototype.modifier_reponse = function(argv1, argv2) {
 };
 
 /**
+ * Permet d'afficher un message dans la textarea
+ *
+ * @method     afficher
+ * @param      {string}  affichage     { le message à afficher }
+ */
+ElizaBot.prototype.afficher = function(affichage)
+{
+	document.getElementById("historique").value += "\n" + affichage;
+	var textArea = document.getElementById('historique');
+    textArea.scrollTop = textArea.scrollHeight;
+}
+
+
+/**
  * Permet d'afficher la reponse
  *
  * @method     afficher_reponse
- * @param      {string}  rep     { la reponse a afficher }
+ * @param      {string}  rep     { la reponse à afficher }
  */
 ElizaBot.prototype.afficher_reponse = function(rep) {
 	document.getElementById("historique").value += "\n[USER]  : " + document.getElementById("user_input_text").value;
