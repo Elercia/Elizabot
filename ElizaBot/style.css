@@ -101,19 +101,19 @@ a
 #div_def_cle
 {
     margin: 3px;
-    width: 32%;
+    width: 22%;
 }
 
 #div_def_def
 {
     margin: 3px;
-    width: 32%;
+    width: 48%;
 }
 
 #div_def_dep
 {
     margin: 3px;
-    width: 32%;
+    width: 20%;
 }
 
 .div_def_para{
@@ -146,30 +146,10 @@ a
     right:0;
     margin-top:30px;
     margin-bottom:30px;
-    margin-right:5px;
     opacity: 0.7;
 }
 
-td
-{
-	font-family:Verdana;
-	color:#D8D8D8;
-	border:1px solid white;
-	text-align:center;
-	position:relative;
-}
 
-table
-{
-	width:67%;
-	margin:0 auto;
-	margin-top:30x;
-}
-
-td img
-{
-	border:1px solid black;
-}
 
 #bloc_menu_tuto
 {
@@ -219,12 +199,30 @@ td img
 	text-align:center;
 }
 
-td img
+.cellule img
 {
 	padding:0;
+	border:3px solid black;
 }
 
-td
+.cellule
 {
 	padding:0;
+	color:#D8D8D8;
+	border:2px solid white;
+	font-family:Verdana;
+	text-align:center;
+}
+
+.legende
+{
+    margin:0;
+}
+
+
+table
+{
+	width:67%;
+	margin:0 auto;
+	margin-top:30px;
 }
