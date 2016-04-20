@@ -33,22 +33,18 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	phrase_string = minuscule;
 	
 	
-	for(var j = 0; j < this.ensemble_rep.length; j++)
+	for(var j = 0; j < this.ensemble_rep.length; j++) //Parcours tableau ensemble réponses
 	{
-	    for(var k in(this.ensemble_rep[j]).mots_cle)
+	    for(var k in(this.ensemble_rep[j]).mots_cle) //Parcours tableau des mots clés
 	    {
-	        var n = phrase_string.indexOf(this.ensemble_rep[j].mots_cle[k]);
+	        var n = phrase_string.indexOf(this.ensemble_rep[j].mots_cle[k]); //Recherche index d'un mot clé
 	        
-	        if(n != -1)
+	        if(n != -1) //Si index du mot clé différent de -1
 	        {
-	            retour.push([this.ensemble_rep[j].mots_cle[k]]); //Si Ok ajout dans tableau de retour
+	            retour.push([this.ensemble_rep[j].mots_cle[k]]); //Alors ajout mot clé dans tableau de retour
 	        }
 	    }
 	}
-	
-	
-	
-	
 	
 	//On met la chaîne de caractère sous forme de tableau de String
 	/*tab_split = minuscule.split(espace);
@@ -81,7 +77,5 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
         }
     }
     
-    alert(retour);
-    console.log(retour);
 	return retour;//Retourner le tableau avec les mots clés
 }
