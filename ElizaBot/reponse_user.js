@@ -7,13 +7,13 @@ ElizaBot.prototype.donner_reponse = function()
 	{
 		//récupere la saisie de l'utilisateur
 		var saisie_utilisateur = document.getElementById("user_input_text").value;
+		this.derniers_messages.push(saisie_utilisateur);
 
 		//recherche le ou les mots clefs faisant partie de la BDD dans la phrase saisie
 		var mot_cle = this.recherche_mot_cle(saisie_utilisateur);
-		this.derniers_mots_cles_brut.push(mot_cle);
 
 		//Si les nouveaux mots cles sont identiques à ceux de la demande précédente 
-		if (((String(mot_cle) === String(this.derniers_mots_cles_brut[this.derniers_mots_cles_brut.length-2])) && (this.derniers_mots_cles.length!=0)))
+		if ((saisie_utilisateur == this.derniers_messages[this.derniers_messages.length-2]) && (this.derniers_messages.length!=0))
 		{
 			mot_cle = ["sameinput"];
 		}
@@ -23,7 +23,7 @@ ElizaBot.prototype.donner_reponse = function()
 		{
 			for (j in mot_cle)
 			{
-				if ((String(mot_cle[j]).search(mot_cle[i]) != -1) && mot_cle[i]!=mot_cle[j])
+				if ((String(mot_cle[j]).search(mot_cle[i]) != -1) && mot_cle[i] != mot_cle[j])
 				{
 					mot_cle.splice(i,1);
 				}
