@@ -34,14 +34,24 @@ ElizaBot.prototype.donner_reponse = function()
 				}
 			}
 
+			//Garde en mémoire si l'utilisateur n'a pas compris
 			var incomprehension = false;
+			//On garde la trace d'où est le mot cle qui signifie que l'utilisateur n'a pas compris
+			var traceIncomprehension;
+			//On retient en mémoire si l'utilisateur veut un exemple
+			var exemple = false;
+
 			for (i in mot_cle)
 			{
 				var correspondance = this.rechercher_correspondance(mot_cle[i]);
 				if (String(correspondance.ensemble_def)=="incomprehension")
 				{
 					incomprehension = true;
-					console.log("incomprehension=true");
+					traceIncomprehension=i;
+				}
+				if (String(correspondance.ensemble_def)=="exemple")
+				{
+					exemple = true;
 				}
 
 			}
@@ -53,60 +63,47 @@ ElizaBot.prototype.donner_reponse = function()
 			}
 			else //Sinon on trouve la réponse pour lui envoyer
 			{
-				var affichage;
-				//on recherche la reponse (motclef/ensembledef/ensembledependance) correspondant au mot clef
+				var affichage; //Le message qui sera affiché au final
+				//Si on a repéré que l'utilisateur n'a pas compris
 				if (incomprehension == true)
 				{
 					if (mot_cle.length>1)
 					{
+						mot_cle.splice(traceIncomprehension, 1);
 						affichage = this.questionner_user(mot_cle);
 					}
 					else
 					{
 						affichage = this.questionner_user(this.derniers_mots_cles[this.derniers_mots_cles.length-1]);
 					}
-					this.afficher_reponse(affichage);
+					this.afficher_reponse(affichage); //On affiche la question
+				}
+				//Si on a repéré que l'utilisateur veut un exemple
+				else if (exemple == true)
+				{
+					//s'il demande un exemple, on lui donne un exemple du dernier mot clef utilisé
+					affichage = this.donner_exemple(this.derniers_mots_cles[this.derniers_mots_cles.length-1]);
+					this.afficher_reponse(affichage); //on affiche l'exemple
 				}
 				else 
 				{
-					var reponse = this.rechercher_correspondance(mot_cle[0]);
+					var reponse = this.rechercher_correspondance(mot_cle);
 					console.log(reponse);
 					if (typeof reponse!="undefined")
 					{
 						if (mot_cle != "sameinput")
 						{
+
 							this.derniers_mots_cles.push(mot_cle);
 						}
-						else if (reponse.ensemble_def == "exemple")
-						{
-							//s'il demande un exemple, on lui donne un exemple du dernier mot clef utilisé
-							affichage = this.donner_exemple(this.derniers_mots_cles);
-						}
-						affichage = reponse.ensemble_def;
-						this.afficher_reponse(affichage);
+						affichage = reponse.ensemble_def; //On récupère la définition de la réponse
+						this.afficher_reponse(affichage); //on affiche la définition
 					}
 					else
 					{
 						this.pasTrouve();
 					}
 				}
-				//si la reponse existe
-	/*				
-				
-					
-					//si le mot clef fait parti du champ lexical de l'incompréhension et a 
-					//donc pour definition "incompréhension" 
-
-						//S'il y a plus d'un mot cle, et donc que l'utilisateur demande un notion en particulier
-
-					else
-					{
-						
-					}
-					
-
-				*/
-			
 			}
 			
 		}
