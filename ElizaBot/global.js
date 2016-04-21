@@ -193,7 +193,7 @@ function chargement_page(){
     var okLong = false; //Déclaration variable booléen
     
     console.log("Bienvenue sur votre site d'apprentissage des Mathématiques !"); //Message d'accueil
-    console.log("Veuillez vous rendre sur le tutoriel afin de comprendre le fonctionnement de la page web "); //Message d'accueil
+    console.log("Rendez-vous sur la section 'COMMENT ÇA MARCHE ?' pour comprendre le focntionnement"); //Message d'accueil
         
     while(okLong === false) //Boucle tant que la variable est fausse
     {
