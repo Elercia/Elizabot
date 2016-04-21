@@ -36,8 +36,8 @@ ElizaBot.prototype.donner_reponse = function()
 
 			//Garde en mémoire si l'utilisateur n'a pas compris
 			var incomprehension = false;
-			//On garde la trace d'où est le mot cle qui signifie que l'utilisateur n'a pas compris
-			var traceIncomprehension;
+			//On garde la trace d'où est le mot cle qui signifie que l'utilisateur n'a pas compris ou qu'il veut un exemple
+			var trace;
 			//On retient en mémoire si l'utilisateur veut un exemple
 			var exemple = false;
 
@@ -47,17 +47,18 @@ ElizaBot.prototype.donner_reponse = function()
 				if (String(correspondance.ensemble_def)=="incomprehension")
 				{
 					incomprehension = true;
-					traceIncomprehension=i;
+					trace=i;
 				}
 				if (String(correspondance.ensemble_def)=="exemple")
 				{
 					exemple = true;
+					trace=i;
 				}
 
 			}
 
 			//S'il y a plus d'un mot clé, on demandera à l'utilisateur de quel notion il veut parler
-			if ((mot_cle.length>1) && (incomprehension==false))
+			if ((mot_cle.length>1) && (incomprehension==false) && (exemple == false))
 			{
 				this.choisir_mot_cle(mot_cle);
 			}
@@ -69,7 +70,7 @@ ElizaBot.prototype.donner_reponse = function()
 				{
 					if (mot_cle.length>1)
 					{
-						mot_cle.splice(traceIncomprehension, 1);
+						mot_cle.splice(trace, 1);
 						affichage = this.questionner_user(mot_cle);
 					}
 					else
@@ -82,7 +83,15 @@ ElizaBot.prototype.donner_reponse = function()
 				else if (exemple == true)
 				{
 					//s'il demande un exemple, on lui donne un exemple du dernier mot clef utilisé
-					affichage = this.donner_exemple(this.derniers_mots_cles[this.derniers_mots_cles.length-1]);
+					if (mot_cle.length>1)
+					{
+						mot_cle.splice(trace, 1);
+						affichage = this.donner_exemple(mot_cle);
+					}
+					else
+					{
+						affichage = this.donner_exemple(this.derniers_mots_cles[this.derniers_mots_cles.length-1]);
+					}
 					this.afficher_reponse(affichage); //on affiche l'exemple
 				}
 				else 
