@@ -88,7 +88,6 @@ ElizaBot.prototype.donner_reponse = function()
 				else 
 				{
 					var reponse = this.rechercher_correspondance(mot_cle);
-					console.log(reponse);
 					if (typeof reponse!="undefined")
 					{
 						if (mot_cle != "sameinput")
