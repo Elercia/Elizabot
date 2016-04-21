@@ -64,7 +64,7 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	    }
 	}*/
 
-    /*retour.sort(); //Tri des éléments dans ordre alphabétique*/
+    retour.sort(); //Tri des éléments dans ordre alphabétique
     
     for(var l = retour.length; l > -1; l--) //Parcours du tableau en partant de la fin
     {
