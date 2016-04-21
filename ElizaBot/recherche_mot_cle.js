@@ -41,7 +41,7 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
 	        
 	        if(n != -1) //Si index du mot clé différent de -1
 	        {
-	            retour.push([this.ensemble_rep[j].mots_cle[k]]); //Alors ajout mot clé dans tableau de retour
+	            retour.push(this.ensemble_rep[j].mots_cle[k]); //Alors ajout mot clé dans tableau de retour
 	        }
 	    }
 	}
@@ -76,6 +76,6 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
             }
         }
     }
-    
+    console.log(retour);
 	return retour;//Retourner le tableau avec les mots clés
 }
