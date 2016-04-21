@@ -8,13 +8,13 @@
  */
 ElizaBot.prototype.questionner_user = function(mot_clef)
 {
-	var resultat = "Tu ne comprend pas la notion de ";
+	var resultat = "Quelle notion ne comprend tu pas : Celle de ";
 
 	var rep1 = this.rechercher_correspondance(mot_clef);//on recherche la reponse correspondant au mot clé que l'on nous a donné
 
 	if(!(rep1 instanceof Reponse))
 	{
-		resultat = "je ne peu malheureusement pas t'aider";
+		resultat = "je ne peux malheureusement pas t'aider";
 	}
 	else
 	{
@@ -26,9 +26,6 @@ ElizaBot.prototype.questionner_user = function(mot_clef)
 			resultat += dep;
 	}
 	resultat += "?";
-	/* TODO : modifier "this.dernier_mot_clef" pour que ça coïncide
-	(Que ça ait un rapport avec ce qu'on vient de lui demander)*/
-	this.dernier_mot_clef;
 
 	return resultat;  
 }
