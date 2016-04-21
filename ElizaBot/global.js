@@ -232,6 +232,9 @@ function chargement_page(){
         }
     }
     
+    
+    //Pour ajouter des espaces à la première ligne au prénom de l'enseignant
+    
 	if((nomUser.length) > (5))
 	{
 	    document.getElementById("historique").value = "[SOLEN]" + espace + " : Bonjour";
