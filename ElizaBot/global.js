@@ -187,46 +187,53 @@ new Reponse(["exemple"], "exemple", [])
  * @method     chargement_page
  */ 
 function chargement_page(){
+
+    admin(false);
     
-    var okLong = false;
+    var okLong = false; //Déclaration variable booléen
     
-    while(okLong === false)
+    console.log("Bienvenue sur votre site d'apprentissage des Mathématiques !"); //Message d'accueil
+    console.log("Veuillez vous rendre sur le tutoriel afin de comprendre le fonctionnement de la page web "); //Message d'accueil
+        
+    while(okLong === false) //Boucle tant que la variable est fausse
     {
-        nomUser = prompt("Quelle est votre nom ?");
-        if(nomUser.length < 1)
+        nomUser = prompt("Quelle est votre nom ?"); //Demande à l'utilisateur son prénom
+        if(nomUser.length < 1) //Si le prénom est vide
         {
-            alert("Veuillez ne pas rentrez un prénom vide !");
-            okLong = false;
+            alert("Veuillez ne pas rentrez un prénom vide !"); //Message d'alerte
+            okLong = false; //Variable tjr à faux
         }
-        else if(nomUser.length > 20)
+        else if(nomUser.length > 20) //Si le prénom est trop long
         {
-            alert("Vous rentrez un prénom trop long !");
-            okLong = false;
+            alert("Vous rentrez un prénom trop long !"); //Message d'alerte
+            okLong = false; //Variable tjr à faux
         }
-        else
+        else //C'est ok
         {
-            alert("Bien, c'est un beau prénom !");
-            okLong = true
+            okLong = true //On met la variable à l'état vrai
         }
-        nomUser = nomUser.toUpperCase();
+        nomUser = nomUser.toUpperCase(); //On met le prénom en majuscule
     }
 
-    if((nomUser.length) > (5))
+    if((nomUser.length) > (5)) //Si longueur nom supérieur à 5
     {
-        nbespace = (nomUser.length) - 5;
-        for(var z = 0; z < nbespace; z++)
+        nbespace = (nomUser.length) - (5); //On calcule différence
+        for(var z = 0; z < nbespace; z++) //Boucle de longueur de la différence
         {
-            espace += " ";
+            espace += " "; //On ajoute des espaces
         }
     }
-    else if((nomUser.length) < (5))
+    else if((nomUser.length) < (5)) //Si longueur nom inférieur à 5
     {
-        nbespace1 = 5 - (nomUser.length);
-        for(var y = 0; y < nbespace1; y++)
+        nbespace1 = 5 - (nomUser.length); //On calcule différence
+        for(var y = 0; y < nbespace1; y++) //Boucle de longueur de la différence
         {
-            espace1 += " ";
+            espace1 += " "; //On ajoute des espaces
         }
     }
+    
+    
+    //Pour ajouter des espaces à la première ligne au prénom de l'enseignant
     
 	if((nomUser.length) > (5))
 	{
@@ -239,7 +246,6 @@ function chargement_page(){
 	}
 	
 	document.getElementById("user_input_text").value = "";
-	admin(false);
 	//fonction initialisation export bdd
 	var f = document.getElementById("file_user_export");
 	f.onchange = function(){
