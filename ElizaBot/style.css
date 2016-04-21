@@ -1,6 +1,6 @@
 body{
     padding:0;
-    margin:30px;
+    margin:25px;
     background-image:url("images/background.jpeg");
     margin-top:0;
 }
@@ -113,7 +113,7 @@ a
 #div_def_dep
 {
     margin: 3px;
-    width: 20%;
+    width: 18%;
 }
 
 .div_def_para{
