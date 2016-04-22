@@ -5,7 +5,7 @@ ElizaBot.prototype.donner_reponse = function()
 {
 	//récupere la saisie de l'utilisateur
 	var saisie_utilisateur = document.getElementById("user_input_text").value;
-
+	saisie_utilisateur=saisie_utilisateur.trim();
 	//Si la saisie ne ressemble pas à une commande
 	if (saisie_utilisateur[0] != "/")
 	{
@@ -116,6 +116,7 @@ ElizaBot.prototype.donner_reponse = function()
 			
 		}
 	}
+	// Si (saisie_utilisateur[0] == "/")
 	else
 	{
 		if (saisie_utilisateur.endsWith("admin"))
