@@ -155,10 +155,6 @@ ElizaBot.prototype.afficher = function(affichage)
  * @param      {string}  rep     { la reponse à afficher }
  */
 ElizaBot.prototype.afficher_reponse = function(rep) {
-
-
-    
-
 	document.getElementById("historique").value += "\n[" + nomUser + "]" + espace1 + " : " + document.getElementById("user_input_text").value;
 	document.getElementById("historique").value += "\n[SOLEN]" + espace + " : " + rep;
 	document.getElementById("user_input_text").value = "";
@@ -197,7 +193,11 @@ function chargement_page(){
         
     while(okLong === false) //Boucle tant que la variable est fausse
     {
-        nomUser = prompt("Quelle est votre nom ?"); //Demande à l'utilisateur son prénom
+        nomUser = prompt("Quel est votre nom ?"); //Demande à l'utilisateur son prénom
+        if (nomUser == null)
+        {
+        	nomUser="user";
+        }
         if(nomUser.length < 1) //Si le prénom est vide
         {
             alert("Veuillez ne pas rentrez un prénom vide !"); //Message d'alerte
@@ -212,6 +212,8 @@ function chargement_page(){
         {
             okLong = true //On met la variable à l'état vrai
         }
+
+        
         nomUser = nomUser.toUpperCase(); //On met le prénom en majuscule
     }
 

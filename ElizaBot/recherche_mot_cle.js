@@ -76,6 +76,5 @@ ElizaBot.prototype.recherche_mot_cle =  function(saisie_utilisateur)
             }
         }
     }
-    console.log(retour);
 	return retour;//Retourner le tableau avec les mots clés
 }
