@@ -209,7 +209,6 @@ a
 {
 	padding:0;
 	color:#D8D8D8;
-	border:2px solid white;
 	font-family:Verdana;
 	text-align:center;
 }
@@ -225,4 +224,14 @@ table
 	width:67%;
 	margin:0 auto;
 	margin-top:30px;
+}
+
+hr
+{
+    width:65%;
+    height:3px;
+    color:white;
+    background-color:white;
+    margin-top:75px;
+    margin-bottom:75px;
 }
