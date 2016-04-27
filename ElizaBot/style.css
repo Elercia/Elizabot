@@ -15,6 +15,16 @@ body{
     margin-top:0;
 }
 
+#titre_1
+{
+    font-size:35px;
+    text-align:center;
+    font-family:Verdana;
+    font-style:italic;
+    color:#D8D8D8;
+    margin:0;
+}
+
 #historique{
     min-width: 50%;
     min-height: 30%;
@@ -42,18 +52,19 @@ a
 #menu
 {
     position:absolute;
+	top:100px;
     width:100%;
     color:#D8D8D8;
 	padding:0;
 	font-family:Verdana;
 	margin:0;
+	margin-left:30px;
 }
 
 #menu li
 {
     list-style:none;
-    height:40px;
-    font-size:20px;
+    font-size:55px;
     font-family:Verdana;
     border-top:1px solid white;
     width:100%;
@@ -236,6 +247,13 @@ hr
     height:3px;
     color:white;
     background-color:white;
-    margin-top:75px;
     margin-bottom:75px;
+}
+
+#back
+{
+	width:80px;
+	position:absolute;
+	top:120px;
+	right:50px;
 }
