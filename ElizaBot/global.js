@@ -186,53 +186,19 @@ function chargement_page(){
 
     admin(false);
     
-    var okLong = false; //Déclaration variable booléen
-    
     console.log("Bienvenue sur votre site d'apprentissage des Mathématiques !"); //Message d'accueil
     console.log("Rendez-vous sur la section 'COMMENT ÇA MARCHE ?' pour comprendre le focntionnement"); //Message d'accueil
-        
-    while(okLong === false) //Boucle tant que la variable est fausse
+    
+    var n = readCookie("usernameElizaBot");
+    if(n == null)
     {
-        nomUser = prompt("Quel est votre nom ?"); //Demande à l'utilisateur son prénom
-        if (nomUser == null)
-        {
-        	nomUser="user";
-        }
-        if(nomUser.length < 1) //Si le prénom est vide
-        {
-            alert("Veuillez ne pas rentrez un prénom vide !"); //Message d'alerte
-            okLong = false; //Variable tjr à faux
-        }
-        else if(nomUser.length > 20) //Si le prénom est trop long
-        {
-            alert("Vous rentrez un prénom trop long !"); //Message d'alerte
-            okLong = false; //Variable tjr à faux
-        }
-        else //C'est ok
-        {
-            okLong = true //On met la variable à l'état vrai
-        }
-
-        
-        nomUser = nomUser.toUpperCase(); //On met le prénom en majuscule
+    	modifier_nom();
     }
-
-    if((nomUser.length) > (5)) //Si longueur nom supérieur à 5
+    else
     {
-        nbespace = (nomUser.length) - (5); //On calcule différence
-        for(var z = 0; z < nbespace; z++) //Boucle de longueur de la différence
-        {
-            espace += " "; //On ajoute des espaces
-        }
+    	modifier_nom(n);
     }
-    else if((nomUser.length) < (5)) //Si longueur nom inférieur à 5
-    {
-        nbespace1 = 5 - (nomUser.length); //On calcule différence
-        for(var y = 0; y < nbespace1; y++) //Boucle de longueur de la différence
-        {
-            espace1 += " "; //On ajoute des espaces
-        }
-    }
+    
     
     
     //Pour ajouter des espaces à la première ligne au prénom de l'enseignant
@@ -281,4 +247,87 @@ function admin(bool)
 {
 	document.getElementById("div_def_submit_voir").style.display = (bool)? "block": "none";
 	document.getElementById("div_def").style.display = (bool)? "block": "none";
+}
+
+
+function createCookie(name,value,days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+function eraseCookie(name) {
+	createCookie(name,"",-1);
+}
+
+function modifier_nom(value)
+{
+	if(typeof value == "undefined")
+	{
+		var okLong = false; //Déclaration variable booléen
+	    
+		while(okLong === false) //Boucle tant que la variable est fausse
+	    {
+	        nomUser = prompt("Quel est votre nom ?"); //Demande à l'utilisateur son prénom
+	        if (nomUser == null)
+	        {
+	        	nomUser="user";
+	        }
+	        if(nomUser.length < 1) //Si le prénom est vide
+	        {
+	            alert("Veuillez ne pas rentrez un prénom vide !"); //Message d'alerte
+	            okLong = false; //Variable tjr à faux
+	        }
+	        else if(nomUser.length > 20) //Si le prénom est trop long
+	        {
+	            alert("Vous rentrez un prénom trop long !"); //Message d'alerte
+	            okLong = false; //Variable tjr à faux
+	        }
+	        else //C'est ok
+	        {
+	            okLong = true //On met la variable à l'état vrai
+	        }
+	
+	        
+	        nomUser = nomUser.toUpperCase(); //On met le prénom en majuscule
+	    }
+	}
+	else
+	{
+		nomUser = value;
+	}
+
+	createCookie("usernameElizaBot", nomUser, 7);
+
+    if((nomUser.length) > (5)) //Si longueur nom supérieur à 5
+    {
+        nbespace = (nomUser.length) - (5); //On calcule différence
+        for(var z = 0; z < nbespace; z++) //Boucle de longueur de la différence
+        {
+            espace += " "; //On ajoute des espaces
+        }
+    }
+    else if((nomUser.length) < (5)) //Si longueur nom inférieur à 5
+    {
+        nbespace1 = 5 - (nomUser.length); //On calcule différence
+        for(var y = 0; y < nbespace1; y++) //Boucle de longueur de la différence
+        {
+            espace1 += " "; //On ajoute des espaces
+        }
+    }
 }
