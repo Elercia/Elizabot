@@ -48,7 +48,7 @@ ElizaBot.prototype.maintenance_bdd = function() {
 		d.value = cacher;
 		var text_cle, text_def, text_dep, a, supprimer;
 		var div2;
-		for(var i = 9; i< this.ensemble_rep.length ; i++)
+		for(var i = 8; i< this.ensemble_rep.length ; i++)
 		{
 			div2 = document.createElement("div");
 			div2.setAttribute("class", "div_def_para");
