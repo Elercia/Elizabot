@@ -29,19 +29,19 @@
 		</p>
 		
 		<p id="user_input">
-			<input type="text" placeholder="Posez moi votre question" id="user_input_text" onkeydown = "if (event.keyCode == 13){document.getElementById('user_input_submit').click()}" autofocus="true"/>
-			<input type="submit" value="Envoyer Message" id="user_input_submit" onclick="Eliza.donner_reponse()"/>
+			<input type="text" class="myButton" placeholder="Posez moi votre question" id="user_input_text" onkeydown = "if (event.keyCode == 13){document.getElementById('user_input_submit').click()}" autofocus="true"/>
+			<input type="submit" class="myButton" value="Envoyer Message" id="user_input_submit" onclick="Eliza.donner_reponse()"/>
 		</p>
 	</div>
 	
 	<div id="div_modif">
-		<input type="file" id="file_user_export" />
+		<input type="file" class="myButton" id="file_user_export" />
         <div id="dl">
-		    <input type="submit" id="file_user_import" value="Récupérer fichier de configuration" onclick="Eliza.exporter_bdd()"/>
+		    <input type="submit" class="myButton" id="file_user_import" value="Récupérer fichier de configuration" onclick="Eliza.exporter_bdd()"/>
 	    </div>
 	</div>
 	
-	<input id="div_def_submit_voir" type="submit" value="Afficher définitions" onclick="Eliza.maintenance_bdd()">
+	<input id="div_def_submit_voir" class="myButton" type="submit" value="Afficher définitions" onclick="Eliza.maintenance_bdd()">
 	
 	<div id="div_def">
 	</div>
