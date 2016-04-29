@@ -204,33 +204,3 @@ ElizaBot.prototype.pasTrouve = function()
 		this.afficher_reponse("Dis m'en plus");
 	}
 }
-
-
-/**
-*Compare deux tableaux
-*@param {Array} tab1 le premier tableau à comparer
-*@param {Array} tab2 le deuxième tableau à comparer
-*@return {boolean} retour true si les deux tableaux sont égaux, false sinon
-*/
-/*
-function comparer_tableau(tab1, tab2)
-{
-	var retour = true;
-	if (tab1.length!=tab2.length)
-	{
-		retour = false;
-	}
-	else
-	{
-		for (var i = 0; i<tab1.length; i++)
-		{
-			if (tab1[i] != tab2[i])
-			{
-				retour=false;
-				return retour;
-			}
-		}
-	}
-	return retour;
-}
-*/
