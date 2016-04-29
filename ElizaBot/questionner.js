@@ -14,7 +14,11 @@ ElizaBot.prototype.questionner_user = function(mot_clef)
 
 	if(!(rep1 instanceof Reponse))
 	{
-		resultat = "je ne peux malheureusement pas t'aider";
+		resultat = "Je ne peux malheureusement pas t'aider";
+	}
+	else if (rep1.ensemble_dependance=[]) 
+	{
+		resultat = "Je ne peut pas plus développer que ça";
 	}
 	else
 	{
