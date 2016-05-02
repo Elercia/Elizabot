@@ -336,3 +336,15 @@ function modifier_nom(value)
         }
     }
 }
+
+var myEvent = window.attachEvent || window.addEventListener;
+
+var chkevent = window.attachEvent ? 'onbeforeunload' : 'beforeunload';
+
+myEvent(chkevent, function(e) {
+    var confirmationMessage = 'Are you sure to leave the page?';
+
+    (e || window.event).returnValue = confirmationMessage;
+
+    return confirmationMessage;
+});
