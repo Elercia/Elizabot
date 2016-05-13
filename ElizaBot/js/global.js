@@ -370,8 +370,9 @@ window.onbeforeunload = function (e) {
 		createCookie("ElizaData",JSON.stringify(Eliza.ensemble_rep),"7");
 
 		e.returnValue = 'Any string1';
-	}
-
+		return "test";
+	}else
 	// For Safari
-	return 'Any string2';
+	return 'Veuillez vérifier que vous avez bien exporté votre fichier de configuration.\n'
+	+'Dans le cas contraire votre configuration ne sera pas sauvegardée après la fermeture du navigateur';
 };
