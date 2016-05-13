@@ -162,7 +162,11 @@ ElizaBot.prototype.afficher_reponse = function(rep) {
     textArea.scrollTop = textArea.scrollHeight;
 }
 
-
+/**
+ * { Objet de type ElizaBot permttant de faire fonctionner le programme }
+ *
+ * @type       {ElizaBot}
+ */
 var Eliza = new ElizaBot([
 new Reponse(["sameinput"], "Il me semble que vous vous répetez", []),
 new Reponse(["comprend pas", "pas compris"], "incomprehension", []),
@@ -175,15 +179,20 @@ new Reponse(["pute","conne","salope","petasse","con","putain","salop"], "Pas la 
 ]);
 
 
-    var nomUser; //Variable nom user
-    var espace = "";
+    var nomUser; //Variable correspondant au nom de l'utilisateur
+    var espace = "";//le nombre d'espace pour décaler le texte au même nombre d'espace que selui de Eliza
     var espace1 = "";        
     var nbespace;
     var nbespace1;
     
     
 /**
- * Fonction chargé au démarrage de la page
+ * .Fonction chargé au démarrage de la page Permmettant d'initialiser le nom de l'utilisateur 
+ * (en fonction du localStorage)
+ * 
+ * .Génere un eventListener pour l'entrer d'un fichier dans la page HTML
+ * 
+ * .Initialise la conversation
  *
  * @method     chargement_page
  */ 
@@ -226,8 +235,8 @@ function chargement_page(){
 	{
 	    document.getElementById("historique").value = "[SOLEN] : Bonjour";
 	}
-	
 	document.getElementById("user_input_text").value = "";
+
 	//fonction initialisation export bdd
 	var f = document.getElementById("file_user_export");
 	f.onchange = function(){
@@ -255,7 +264,7 @@ function chargement_page(){
  * Affiche ou non le boutton des définition
  *
  * @method     admin
- * @param      {Boolean}  bool    { afficher ou non }
+ * @param      {Boolean}  bool    { afficher ou non le menu déroulant pour la maintenance de la bdd}
  */
 function admin(bool)
 {
@@ -264,6 +273,15 @@ function admin(bool)
 }
 
 
+/**
+ * Ne pas ce fier au nom
+ * Elle utilise le LocalStorage pour stocker des information tel que la base de donné ou le nom de l'utilisateur
+ *
+ * @method     createCookie
+ * @param      {String}  name    { le nom de la donné stockée }
+ * @param      {String}  value   { la valeur de la donné stockée }
+ * @param      {number}  days    { parameter_description }
+ */
 function createCookie(name,value,days) {
 	if (days) {
 		var date = new Date();
@@ -275,6 +293,13 @@ function createCookie(name,value,days) {
 	sessionStorage.setItem(name, value);
 }
 
+/**
+ * Permet de récupérer la valeur d'une donné local stocké
+ *
+ * @method     readCookie
+ * @param      {string}  name    { le nom de la donné local }
+ * @return     {string}  { description_of_the_return_value }
+ */
 function readCookie(name) {
 	/*var nameEQ = name + "=";
 	var ca = document.cookie.split(';');
@@ -291,10 +316,22 @@ function readCookie(name) {
 	return null;
 }
 
+/**
+ * Supprime une donné local
+ *
+ * @method     eraseCookie
+ * @param      {<type>}  name    { parameter_description }
+ */
 function eraseCookie(name) {
 	createCookie(name,"",-1);
 }
 
+/**
+ * Permet de modifier le nom de l'utilisateur à tous moment dans le pogramme
+ *
+ * @method     modifier_nom
+ * @param      {(Function|string)}  value   { parameter_description }
+ */
 function modifier_nom(value)
 {
 	if(typeof value == "undefined")
@@ -362,6 +399,13 @@ myEvent(chkevent, function() {
 });
 */
 
+/**
+ * Fonction donnant à l'utilisateur un derniere avertissement avant la fermeture de l'onglet
+ *
+ * @method     onbeforeunload
+ * @param      {event}  e       { evenement }
+ * @return     {string}  { la phrase à afficher dans la boite de dialogue }
+ */
 window.onbeforeunload = function (e) {
 	var e = e || window.event;
 

@@ -103,6 +103,12 @@ ElizaBot.prototype.maintenance_bdd = function() {
 	}
 };
 
+/**
+ * Correspond a l'appui sur le boutton supprimer définition 
+ *
+ * @method     supprimer_def
+ * @param      {int}  argv    { La position de la définition dans le tableau }
+ */
 ElizaBot.prototype.supprimer_def = function(argv){
 	this.ensemble_rep.splice(Number(argv), 1);
 	var actu = document.getElementById("div_def_submit_voir");

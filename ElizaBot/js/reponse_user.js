@@ -1,6 +1,9 @@
+
 /**
-*Fonction qui permet de donner des réponse lorsque l'utilisateur envoie son message
-*/											
+ * Fonction permettant de donner une réponse àl'utilisateur en focntion des mots clés récupérés
+ *
+ * @method     donner_reponse
+ */
 ElizaBot.prototype.donner_reponse = function()
 {
 	//récupere la saisie de l'utilisateur
@@ -158,7 +161,8 @@ ElizaBot.prototype.donner_reponse = function()
 }
 /**
  * Fonction qui va demander à l'utilisateur de quel mot il veut parler
- * @param {Array} mot_cle Le tableau des mots cles trouvés
+ * 
+ * @param {Array} mot_cle { Le tableau des mots cles trouvés }
  */
 ElizaBot.prototype.choisir_mot_cle = function(mot_cle)
 {
@@ -180,8 +184,10 @@ ElizaBot.prototype.choisir_mot_cle = function(mot_cle)
 }
 
 /**
-*Est appellée si la fonction donner_reponse n'a pas trouvé de réponse
-*/
+ * Est appellée si la fonction donner_reponse n'a pas trouvé de réponse
+ *
+ * @method     pasTrouve
+ */
 ElizaBot.prototype.pasTrouve = function()
 {
 	// 0 < proba < 1
