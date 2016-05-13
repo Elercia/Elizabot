@@ -191,8 +191,8 @@ function chargement_page(){
 
     admin(false);
     
-    console.log("Bienvenue sur votre site d'apprentissage des Mathématiques !"); //Message d'accueil
-    console.log("Rendez-vous sur la section 'COMMENT ÇA MARCHE ?' pour comprendre le focntionnement"); //Message d'accueil
+    //console.log("Bienvenue sur votre site d'apprentissage des Mathématiques !"); //Message d'accueil
+    //console.log("Rendez-vous sur la section 'COMMENT ÇA MARCHE ?' pour comprendre le focntionnement"); //Message d'accueil
     
     var n = readCookie("usernameElizaBot");
     if(n == null)
@@ -207,10 +207,8 @@ function chargement_page(){
 
     if(Edata != null)
     {
-    	alert();
     	if(Edata != [])
 		{
-			alert();
 			Eliza.modifier_bdd(Edata);
 		}
     }
