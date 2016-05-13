@@ -307,8 +307,6 @@ function modifier_nom(value)
 	        {
 	            okLong = true //On met la variable à l'état vrai
 	        }
-	
-	        
 	        nomUser = nomUser.toUpperCase(); //On met le prénom en majuscule
 	    }
 	}
@@ -317,8 +315,11 @@ function modifier_nom(value)
 		nomUser = value;
 	}
 
+	//Reinitialisation des espaces
+	espace= "" ;
+	espace1= "" ;
+	
 	createCookie("usernameElizaBot", nomUser, 7);
-
     if((nomUser.length) > (5)) //Si longueur nom supérieur à 5
     {
         nbespace = (nomUser.length) - (5); //On calcule différence

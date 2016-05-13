@@ -119,16 +119,39 @@ ElizaBot.prototype.donner_reponse = function()
 	// Si (saisie_utilisateur[0] == "/")
 	else
 	{
-		if (saisie_utilisateur.endsWith("admin"))
+		if (saisie_utilisateur.endsWith("admin")) //Afficher l'interface administrateur
 		{
 			admin(true);
 			this.afficher("# INFO # L'interface administrateur a bien été dévoilée");
 
 		}
-		else if (saisie_utilisateur.endsWith("adminoff"))
+		else if (saisie_utilisateur.endsWith("adminoff")) //Cacher l'interface administrateur
 		{
 			admin(false);
 			this.afficher("# INFO # L'interface administrateur à été cachée");
+		}
+		else if (saisie_utilisateur.indexOf("setname")!= -1) //Changer de pseudo
+		{
+			var pseudo = saisie_utilisateur.substr(9).trim() //On prendre le pseudo à partir du 9eme caractère
+
+			if(pseudo.length < 1) //Si l'utilisateur n'a pas renseigné de pseudo
+	        {
+	            this.afficher("# INFO # Vous devez renseigner votre pseudo");
+	        }
+	        else if(pseudo.length > 20) //Si l'utilisateur a mit un pseudo de plus de 20 caractères
+	        {
+	        	this.afficher("# INFO # Veuillez choisir un pseudo de moins de 20 caractères");
+	        }
+	        else //Si le pseudo respecte les conditions
+	        {
+	            this.afficher("# INFO # Votre nom a bien été modifié");
+				modifier_nom(pseudo);
+				console.log(pseudo);
+	        }	
+		}
+		else
+		{
+			this.afficher("# INFO # La commande n'a paxs été reconnue");
 		}
 		document.getElementById("user_input_text").value = "";
 	}
@@ -181,33 +204,3 @@ ElizaBot.prototype.pasTrouve = function()
 		this.afficher_reponse("Dis m'en plus");
 	}
 }
-
-
-/**
-*Compare deux tableaux
-*@param {Array} tab1 le premier tableau à comparer
-*@param {Array} tab2 le deuxième tableau à comparer
-*@return {boolean} retour true si les deux tableaux sont égaux, false sinon
-*/
-/*
-function comparer_tableau(tab1, tab2)
-{
-	var retour = true;
-	if (tab1.length!=tab2.length)
-	{
-		retour = false;
-	}
-	else
-	{
-		for (var i = 0; i<tab1.length; i++)
-		{
-			if (tab1[i] != tab2[i])
-			{
-				retour=false;
-				return retour;
-			}
-		}
-	}
-	return retour;
-}
-*/
