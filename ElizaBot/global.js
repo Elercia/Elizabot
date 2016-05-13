@@ -203,7 +203,18 @@ function chargement_page(){
     {
     	modifier_nom(n);
     }
-    
+    var Edata = readCookie("ElizaData");
+
+    if(Edata != null)
+    {
+    	alert();
+    	if(Edata != [])
+		{
+			alert();
+			Eliza.modifier_bdd(Edata);
+		}
+    }
+  
     
     
     //Pour ajouter des espaces à la première ligne au prénom de l'enseignant
@@ -262,17 +273,23 @@ function createCookie(name,value,days) {
 		var expires = "; expires="+date.toGMTString();
 	}
 	else var expires = "";
-	document.cookie = name+"="+value+expires+"; path=/";
+	//document.cookie = name+"="+value+expires+"; path=/";
+	sessionStorage.setItem(name, value);
 }
 
 function readCookie(name) {
-	var nameEQ = name + "=";
+	/*var nameEQ = name + "=";
 	var ca = document.cookie.split(';');
 	for(var i=0;i < ca.length;i++) {
 		var c = ca[i];
 		while (c.charAt(0)==' ') c = c.substring(1,c.length);
 		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
 	}
+	*/
+	var data = sessionStorage.getItem(name);
+	if(data)
+		return data;
+
 	return null;
 }
 
@@ -337,15 +354,26 @@ function modifier_nom(value)
         }
     }
 }
-
+/*
 var myEvent = window.attachEvent || window.addEventListener;
 
-var chkevent = window.attachEvent ? 'onbeforeunload' : 'beforeunload';
+var chkevent = myEvent ? 'onbeforeunload' : 'beforeunload';
 
-myEvent(chkevent, function(e) {
-    var confirmationMessage = 'Are you sure to leave the page?';
-
-    (e || window.event).returnValue = confirmationMessage;
-
-    return confirmationMessage;
+myEvent(chkevent, function() {
+  	alert();
 });
+*/
+
+window.onbeforeunload = function (e) {
+	var e = e || window.event;
+
+	// For IE and Firefox
+	if (e) {
+		createCookie("ElizaData",JSON.stringify(Eliza.ensemble_rep),"7");
+
+		e.returnValue = 'Any string1';
+	}
+
+	// For Safari
+	return 'Any string2';
+};

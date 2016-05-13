@@ -29,7 +29,6 @@ ElizaBot.prototype.exporter_bdd = function()
     var bu = document.getElementById('down');
     bu.setAttribute("href", "data:text/plain;charset=utf-8,"+encodeURIComponent(result));
 
-
     //Simulation d'un click
     bu.click();
 }
