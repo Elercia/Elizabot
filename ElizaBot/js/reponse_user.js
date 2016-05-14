@@ -1,6 +1,6 @@
 
 /**
- * Fonction permettant de donner une réponse àl'utilisateur en focntion des mots clés récupérés
+ * Fonction permettant de donner une réponse à l'utilisateur en fonction des mots clés récupérés
  *
  * @method     donner_reponse
  */
@@ -184,7 +184,7 @@ ElizaBot.prototype.choisir_mot_cle = function(mot_cle)
 }
 
 /**
- * Est appellée si la fonction donner_reponse n'a pas trouvé de réponse
+ * Est appelée si la fonction donner_reponse n'a pas trouvé de réponse
  *
  * @method     pasTrouve
  */
