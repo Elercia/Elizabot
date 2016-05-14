@@ -1,6 +1,6 @@
 /**
 *fonction permettant de generer une reponse
-@method     reponse
+@class     reponse
 @param      {Array}  mots_cle             { ensemble de mots clé de la reponse }
 @param      {String}  ensemble_def         { ensemble de définitions pour expliquer la reponse }
 @param      {Array}  ensemble_dependance  { ensemble de dependance de connaissance de la reponse }
