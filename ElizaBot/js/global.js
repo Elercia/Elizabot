@@ -111,9 +111,41 @@ ElizaBot.prototype.modifier_reponse = function(argv1, argv2) {
 		{
 			alert
 			if(argv2.value.split(",").length > 1)
-				this.ensemble_rep[num].changer_cle(argv2.value.split(","));
+			{
+				var cle_regexp = argv2.value.split(",")
+				for(var i in cle_regexp)
+				{
+					//On enlève les signes de ponctuation et les accents pour ne pas bloquer un mot clé
+					cle_regexp[i] = cle_regexp[i].replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g," "); //Supprime ponctuation
+					cle_regexp[i] = cle_regexp[i].replace(/['"')]/g," "); //Supprime "
+					cle_regexp[i] = cle_regexp[i].replace(/["'")]/g," "); //Supprime '
+					cle_regexp[i] = cle_regexp[i].replace(/[âÄÆààáãäåÀÁ]/g,"a"); //Supprime 'A' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[Çç]/g,"c"); //Supprime 'C' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[èéêëËÊÉÈ]/g,"e"); //Supprime 'E' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[îÌÍÎÏìíï]/g,"i"); //Supprime 'I' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[ñÑ]/g,"n"); //Supprime 'N' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[ôÒÓÔÕÖØðòóõö]/g,"o"); //Supprime 'O' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[ûùÙÚÛÜùúûü]/g,"u"); //Supprime 'U' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[Ýýÿ]/g,"y"); //Supprime 'Y' spéciaux	
+				}                                         
+				this.ensemble_rep[num].changer_cle(cle_regexp);
+			}
 			else
-				this.ensemble_rep[num].changer_cle([argv2.value]);
+			{
+				var cle_regexp = [argv2.value];
+				cle_regexp = cle_regexp.replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g," "); //Supprime ponctuation
+				cle_regexp = cle_regexp.replace(/['"')]/g," "); //Supprime "
+				cle_regexp = cle_regexp.replace(/["'")]/g," "); //Supprime '
+				cle_regexp = cle_regexp.replace(/[âÄÆààáãäåÀÁ]/g,"a"); //Supprime 'A' spéciaux
+				cle_regexp = cle_regexp.replace(/[Çç]/g,"c"); //Supprime 'C' spéciaux
+				cle_regexp = cle_regexp.replace(/[èéêëËÊÉÈ]/g,"e"); //Supprime 'E' spéciaux
+				cle_regexp = cle_regexp.replace(/[îÌÍÎÏìíï]/g,"i"); //Supprime 'I' spéciaux
+				cle_regexp = cle_regexp.replace(/[ñÑ]/g,"n"); //Supprime 'N' spéciaux
+				cle_regexp = cle_regexp.replace(/[ôÒÓÔÕÖØðòóõö]/g,"o"); //Supprime 'O' spéciaux
+				cle_regexp = cle_regexp.replace(/[ûùÙÚÛÜùúûü]/g,"u"); //Supprime 'U' spéciaux
+				cle_regexp = cle_regexp.replace(/[Ýýÿ]/g,"y"); //Supprime 'Y' spéciaux	
+				this.ensemble_rep[num].changer_cle();
+			}
 			
 		}
 		else if(argv2.id == "div_def_def")
