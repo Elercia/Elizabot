@@ -5,7 +5,7 @@
 @param      {String}  ensemble_def         { ensemble de définitions pour expliquer la reponse }
 @param      {Array}  ensemble_dependance  { ensemble de dependance de connaissance de la reponse }
 */
-function Reponse(mots_cle, ensemble_def, ensemble_dependance)
+function Reponse(mots_cle, ensemble_def, ensemble_dependance, exemples="")
 {
 	if(mots_cle === "undefined"  && ensemble_def === "undefined" && ensemble_dependance === "undefined")
 	{
@@ -14,6 +14,7 @@ function Reponse(mots_cle, ensemble_def, ensemble_dependance)
 	this.mots_cle = mots_cle;
 	this.ensemble_def = ensemble_def;
 	this.ensemble_dependance = ensemble_dependance;
+	this.exemple = exemples;
 }
 
 /**
@@ -44,6 +45,16 @@ Reponse.prototype.changer_def = function(argv) {
  */
 Reponse.prototype.changer_dep = function(argv) {
 	this.ensemble_dependance = argv;
+};
+
+/**
+ * { Methode permettant de changer l'exemple de la reponse }
+ *
+ * @method     changer_dep
+ * @param      {String}  argv    { le nouvel exemple }
+ */
+Reponse.prototype.changer_ex = function(argv) {
+	this.exemple = argv;
 };
 
 
@@ -94,7 +105,6 @@ ElizaBot.prototype.ajouter_reponse = function(rep) {
 	actu.click();
 	actu.click();
 };
-
 
 /**
  * Fonction permettant de modifier une reponse en fonction de son index et d'un input html
