@@ -140,6 +140,10 @@ ElizaBot.prototype.modifier_reponse = function(argv1, argv2) {
 			else
 				this.ensemble_rep[num].changer_dep(argv2.value);
 		}
+		else if(argv2.id == "div_def_exemple")
+		{
+			this.ensemble_rep[num].changer_ex(argv2.value);
+		}
 		//this.ensemble_rep[num]=;
 	}
 };
@@ -425,8 +429,10 @@ window.onbeforeunload = function (e) {
 	if (e) {
 		createCookie("ElizaData",JSON.stringify(Eliza.ensemble_rep),"7");
 
-		e.returnValue = 'Any string1';
-		return "test";
+		e.returnValue = 'Veuillez vérifier que vous avez bien exporté votre fichier de configuration.\n'
+	+'Dans le cas contraire votre configuration ne sera pas sauvegardée après la fermeture du navigateur';
+		return 'Veuillez vérifier que vous avez bien exporté votre fichier de configuration.\n'
+	+'Dans le cas contraire votre configuration ne sera pas sauvegardée après la fermeture du navigateur';
 	}else
 	// For Safari
 	return 'Veuillez vérifier que vous avez bien exporté votre fichier de configuration.\n'

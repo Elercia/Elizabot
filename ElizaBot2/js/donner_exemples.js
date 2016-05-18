@@ -5,5 +5,15 @@
  */
 ElizaBot.prototype.donner_exemple = function(mot_clef)
 {
-	return "je n'ai malheureusement pas d'exemples à te donner";
+	var ex = Eliza.rechercher_correspondance(mot_clef).exemple;
+	var img = document.createElement("img");
+	img.setAttribute("alt", "Un magnifique exemeple");
+	img.setAttribute("src", "exemple/" + ex);
+	img.setAttribute("id", "div_exemple_img");
+
+	var div_ex = document.getElementById('div_exemple');
+	div_ex.innerHTML = "";
+	div_ex.appendChild(img);
+
+	return "Tu peut regarder cet éxemple pour mieux comprendre cette définition";
 }

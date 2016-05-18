@@ -12,7 +12,7 @@ ElizaBot.prototype.modifier_bdd = function(argv) {
 	for(var i in tmp)
 	{
 		//if(!(Eliza.rechercher_correspondance(tmp[i].mots_cle) instanceof Reponse))
-		this.ajouter_reponse(new Reponse(tmp[i].mots_cle, tmp[i].ensemble_def, tmp[i].ensemble_dependance));
+		this.ajouter_reponse(new Reponse(tmp[i].mots_cle, tmp[i].ensemble_def, tmp[i].ensemble_dependance, tmp[i].exemple));
 	}
 	//this.ensemble_rep = JSON.parse(argv);
 };
@@ -81,7 +81,7 @@ ElizaBot.prototype.maintenance_bdd = function() {
 			text_exemple.setAttribute("type", "text");
 			text_exemple.setAttribute("name", ""+i);
 			text_exemple.setAttribute("id", "div_def_exemple");
-			text_exemple.setAttribute("value", a.ensemble_dependance);
+			text_exemple.setAttribute("value", a.exemple);
 			text_exemple.setAttribute("onkeyup", "Eliza.modifier_reponse(this.name, this)");
 
 			supprimer = document.createElement("input");
