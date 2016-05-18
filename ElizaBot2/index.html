@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Projet ElizaBot - Groupe 1.1</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/reponse_user.js"></script>
+	<script type="text/javascript" src="js/questionner.js"></script>
+	<script type="text/javascript" src="js/recherche_mot_cle.js"></script>
+	<script type="text/javascript" src="js/modifier_bdd.js"></script>
+	<script type="text/javascript" src="js/donner_exemples.js"></script>
+	<link rel="icon" href="images/icone.png"/>
+</head>
+<body onload="chargement_page()">
+
+    <p id="titre">Apprenez les Maths avec Solen Quiniou</p>
+   
+    <p id="menu">        
+        <a href="ccm.html">Comment Ça Marche ?</a>
+    </p>
+    
+	<div id="div_user_dialogue">	
+		<p>
+			<textarea id="historique" readonly="readonly" rows="20"></textarea>
+		</p>
+		
+		<p id="user_input">
+			<input type="text" class="myButton" placeholder="Posez moi votre question" id="user_input_text" onkeydown = "if (event.keyCode == 13){document.getElementById('user_input_submit').click()}" autofocus="true"/>
+			<input type="submit" class="myButton" value="Envoyer Message" id="user_input_submit" onclick="Eliza.donner_reponse()"/>
+		</p>
+	</div>
+	
+	<div id="div_modif">
+		<input type="file" class="myButton" id="file_user_export" />
+        <div id="dl">
+		    <input type="submit" class="myButton" id="file_user_import" value="Récupérer fichier de configuration" onclick="Eliza.exporter_bdd()"/>
+	    </div>
+	</div>
+	
+	<input id="div_def_submit_voir" class="myButton" type="submit" value="Afficher définitions" onclick="Eliza.maintenance_bdd()">
+	
+	<div id="div_def">
+	</div>
+
+	<a id="down" style="display:none;" download="conf.json" href=""></a>
+	
+	<p id="sign">
+	     © Groupe Projet Eliza Talk - IUT NANTES
+	</p>
+	
+	<div id="hp">
+	    <a href="#titre"><img src="images/hdp.png"></a>
+    </div>
+
+</body>
+</html>
