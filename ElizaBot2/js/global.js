@@ -162,13 +162,7 @@ ElizaBot.prototype.afficher_reponse = function(rep) {
     textArea.scrollTop = textArea.scrollHeight;
 }
 
-/**
- * { Objet de type ElizaBot permttant de faire fonctionner le programme }
- *
- * @type       {ElizaBot}
- */
-var Eliza = new ElizaBot([
-new Reponse(["sameinput"], "Il me semble que vous vous répetez", []),
+var BASE = [new Reponse(["sameinput"], "Il me semble que vous vous répetez", []),
 new Reponse(["comprend pas", "pas compris"], "incomprehension", []),
 new Reponse(["exemple"], "exemple", []),
 new Reponse(["bonjour","salut","wesh"], "comment vas tu?", []),
@@ -176,7 +170,15 @@ new Reponse(["merci","cimer","remercie"], "De rien c'est un plaisir de t'aider",
 new Reponse(["vais bien"," vais tres bien"], "Je suis content pour toi !", []),
 new Reponse(["vais mal","vais pas bien"], "Dommage pour toi", []),
 new Reponse(["pute","conne","salope","petasse","con","putain","salop"], "Pas la peine d'être grossier !", []),
-]);
+];
+
+/**
+ * { Objet de type ElizaBot permttant de faire fonctionner le programme }
+ *
+ * @type       {ElizaBot}
+ */
+var Eliza = new ElizaBot(BASE
+);
 
 
     var nomUser; //Variable correspondant au nom de l'utilisateur
