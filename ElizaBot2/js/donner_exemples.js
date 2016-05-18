@@ -5,15 +5,32 @@
  */
 ElizaBot.prototype.donner_exemple = function(mot_clef)
 {
-	var ex = Eliza.rechercher_correspondance(mot_clef).exemple;
-	var img = document.createElement("img");
-	img.setAttribute("alt", "Un magnifique exemeple");
-	img.setAttribute("src", "exemple/" + ex);
-	img.setAttribute("id", "div_exemple_img");
+	var erreur = "Je n'ai malheureusement pas d'exemple à te proposer", 
+		bon = "Tu peut regarder cet éxemple pour mieux comprendre cette définition", result="";
 
-	var div_ex = document.getElementById('div_exemple');
-	div_ex.innerHTML = "";
-	div_ex.appendChild(img);
+	var rep = Eliza.rechercher_correspondance(mot_clef);
 
-	return "Tu peut regarder cet éxemple pour mieux comprendre cette définition";
+	if(rep != undefined)
+	{
+		var ex = rep.exemple;
+		if(ex != "undefined" || ex.length == 1)
+		{
+			alert(typeof ex);
+			var img = document.createElement("img");
+			img.setAttribute("alt", "Un magnifique exemple");
+			img.setAttribute("src", "exemple/" + ex);
+			img.setAttribute("id", "div_exemple_img");
+
+			var div_ex = document.getElementById('div_exemple');
+			div_ex.innerHTML = "";
+			div_ex.appendChild(img);
+		}
+		else
+			result = erreur;
+		
+		result = bon;
+	}
+	else
+		result = erreur;
+	return result;
 }
