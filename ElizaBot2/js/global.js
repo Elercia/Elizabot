@@ -210,7 +210,7 @@ var Eliza = new ElizaBot(BASE
  */ 
 function chargement_page(){
 
-    admin(false);
+    admin(true);
     
     //console.log("Bienvenue sur votre site d'apprentissage des Mathématiques !"); //Message d'accueil
     //console.log("Rendez-vous sur la section 'COMMENT ÇA MARCHE ?' pour comprendre le focntionnement"); //Message d'accueil

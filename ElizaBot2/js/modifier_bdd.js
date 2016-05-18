@@ -11,6 +11,7 @@ ElizaBot.prototype.modifier_bdd = function(argv) {
 	var tmp = JSON.parse(argv);
 	for(var i in tmp)
 	{
+		//if(!(Eliza.rechercher_correspondance(tmp[i].mots_cle) instanceof Reponse))
 		this.ajouter_reponse(new Reponse(tmp[i].mots_cle, tmp[i].ensemble_def, tmp[i].ensemble_dependance));
 	}
 	//this.ensemble_rep = JSON.parse(argv);
@@ -24,7 +25,7 @@ ElizaBot.prototype.modifier_bdd = function(argv) {
 ElizaBot.prototype.exporter_bdd = function()
 {
 	var result;
-	result = JSON.stringify(this.ensemble_rep);
+	result = JSON.stringify(this.ensemble_rep.slice(8));
 	//Création d'un objet LIEN
     var bu = document.getElementById('down');
     bu.setAttribute("href", "data:text/plain;charset=utf-8,"+encodeURIComponent(result));
@@ -45,7 +46,7 @@ ElizaBot.prototype.maintenance_bdd = function() {
 	if(d.value == affiche)
 	{
 		d.value = cacher;
-		var text_cle, text_def, text_dep, a, supprimer;
+		var text_cle, text_def, text_dep, a, text_exemple, supprimer;
 		var div2;
 		for(var i = 8; i< this.ensemble_rep.length ; i++)
 		{
@@ -76,6 +77,13 @@ ElizaBot.prototype.maintenance_bdd = function() {
 			text_dep.setAttribute("value", a.ensemble_dependance);
 			text_dep.setAttribute("onkeyup", "Eliza.modifier_reponse(this.name, this)");
 
+			text_exemple = document.createElement("input");
+			text_exemple.setAttribute("type", "text");
+			text_exemple.setAttribute("name", ""+i);
+			text_exemple.setAttribute("id", "div_def_exemple");
+			text_exemple.setAttribute("value", a.ensemble_dependance);
+			text_exemple.setAttribute("onkeyup", "Eliza.modifier_reponse(this.name, this)");
+
 			supprimer = document.createElement("input");
 			supprimer.setAttribute("type", "submit");
 			supprimer.setAttribute("id", "div_def_supprimer");
@@ -86,6 +94,7 @@ ElizaBot.prototype.maintenance_bdd = function() {
 			div2.appendChild(text_cle);
 			div2.appendChild(text_def);
 			div2.appendChild(text_dep);
+			div2.appendChild(text_exemple);
 			div2.appendChild(supprimer);
 			div.appendChild(div2);
 		}
