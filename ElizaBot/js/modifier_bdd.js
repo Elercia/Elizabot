@@ -4,7 +4,7 @@
  * { Fonction permettant de modifier la bdd grâce à un fichier de configuration}
  *
  * @method     modifier_bdd
- * @param      {string}  argv    { le contenue du fichier chargé }
+ * @param      {string}  argv    { le contenu du fichier chargé }
  */
 ElizaBot.prototype.modifier_bdd = function(argv) {
 	this.ensemble_rep = [];
@@ -104,7 +104,7 @@ ElizaBot.prototype.maintenance_bdd = function() {
 };
 
 /**
- * Correspond a l'appui sur le boutton supprimer définition 
+ * Correspond a l'appui sur le bouton supprimer définition 
  *
  * @method     supprimer_def
  * @param      {int}  argv    { La position de la définition dans le tableau }

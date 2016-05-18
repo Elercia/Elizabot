@@ -1,6 +1,6 @@
 /**
 *fonction permettant de generer une reponse
-@method     reponse
+@class     reponse
 @param      {Array}  mots_cle             { ensemble de mots clé de la reponse }
 @param      {String}  ensemble_def         { ensemble de définitions pour expliquer la reponse }
 @param      {Array}  ensemble_dependance  { ensemble de dependance de connaissance de la reponse }
@@ -111,9 +111,41 @@ ElizaBot.prototype.modifier_reponse = function(argv1, argv2) {
 		{
 			alert
 			if(argv2.value.split(",").length > 1)
-				this.ensemble_rep[num].changer_cle(argv2.value.split(","));
+			{
+				var cle_regexp = argv2.value.split(",")
+				for(var i in cle_regexp)
+				{
+					//On enlève les signes de ponctuation et les accents pour ne pas bloquer un mot clé
+					cle_regexp[i] = cle_regexp[i].replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g," "); //Supprime ponctuation
+					cle_regexp[i] = cle_regexp[i].replace(/['"')]/g," "); //Supprime "
+					cle_regexp[i] = cle_regexp[i].replace(/["'")]/g," "); //Supprime '
+					cle_regexp[i] = cle_regexp[i].replace(/[âÄÆààáãäåÀÁ]/g,"a"); //Supprime 'A' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[Çç]/g,"c"); //Supprime 'C' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[èéêëËÊÉÈ]/g,"e"); //Supprime 'E' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[îÌÍÎÏìíï]/g,"i"); //Supprime 'I' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[ñÑ]/g,"n"); //Supprime 'N' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[ôÒÓÔÕÖØðòóõö]/g,"o"); //Supprime 'O' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[ûùÙÚÛÜùúûü]/g,"u"); //Supprime 'U' spéciaux
+					cle_regexp[i] = cle_regexp[i].replace(/[Ýýÿ]/g,"y"); //Supprime 'Y' spéciaux	
+				}                                         
+				this.ensemble_rep[num].changer_cle(cle_regexp);
+			}
 			else
-				this.ensemble_rep[num].changer_cle([argv2.value]);
+			{
+				var cle_regexp = [argv2.value];
+				cle_regexp = cle_regexp.replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g," "); //Supprime ponctuation
+				cle_regexp = cle_regexp.replace(/['"')]/g," "); //Supprime "
+				cle_regexp = cle_regexp.replace(/["'")]/g," "); //Supprime '
+				cle_regexp = cle_regexp.replace(/[âÄÆààáãäåÀÁ]/g,"a"); //Supprime 'A' spéciaux
+				cle_regexp = cle_regexp.replace(/[Çç]/g,"c"); //Supprime 'C' spéciaux
+				cle_regexp = cle_regexp.replace(/[èéêëËÊÉÈ]/g,"e"); //Supprime 'E' spéciaux
+				cle_regexp = cle_regexp.replace(/[îÌÍÎÏìíï]/g,"i"); //Supprime 'I' spéciaux
+				cle_regexp = cle_regexp.replace(/[ñÑ]/g,"n"); //Supprime 'N' spéciaux
+				cle_regexp = cle_regexp.replace(/[ôÒÓÔÕÖØðòóõö]/g,"o"); //Supprime 'O' spéciaux
+				cle_regexp = cle_regexp.replace(/[ûùÙÚÛÜùúûü]/g,"u"); //Supprime 'U' spéciaux
+				cle_regexp = cle_regexp.replace(/[Ýýÿ]/g,"y"); //Supprime 'Y' spéciaux	
+				this.ensemble_rep[num].changer_cle();
+			}
 			
 		}
 		else if(argv2.id == "div_def_def")
@@ -187,12 +219,13 @@ new Reponse(["pute","conne","salope","petasse","con","putain","salop"], "Pas la 
     
     
 /**
- * .Fonction chargé au démarrage de la page Permmettant d'initialiser le nom de l'utilisateur 
+ * Cette fonction, chargée au démarrage de la page :
+ * -Initialise le nom de l'utilisateur 
  * (en fonction du localStorage)
- * 
- * .Génere un eventListener pour l'entrer d'un fichier dans la page HTML
- * 
- * .Initialise la conversation
+ * \n
+ * -Génere un eventListener pour l'entrée d'un fichier dans la page HTML
+ * \n
+ * -Initialise la conversation
  *
  * @method     chargement_page
  */ 
@@ -261,10 +294,10 @@ function chargement_page(){
 
 
 /**
- * Affiche ou non le boutton des définition
+ * Affiche ou non le bouton des définitions
  *
  * @method     admin
- * @param      {Boolean}  bool    { afficher ou non le menu déroulant pour la maintenance de la bdd}
+ * @param      {Boolean}  bool    { Si True : afficher - Si false : masquer}
  */
 function admin(bool)
 {
@@ -274,12 +307,13 @@ function admin(bool)
 
 
 /**
- * Ne pas ce fier au nom
- * Elle utilise le LocalStorage pour stocker des information tel que la base de donné ou le nom de l'utilisateur
+ * Ne pas se fier au nom
+ * \n
+ * La fonction utilise le LocalStorage pour stocker des informations, telles que la base de données ou le nom de l'utilisateur
  *
  * @method     createCookie
- * @param      {String}  name    { le nom de la donné stockée }
- * @param      {String}  value   { la valeur de la donné stockée }
+ * @param      {String}  name    { le nom de la donnée stockée }
+ * @param      {String}  value   { la valeur de la donnée stockée }
  * @param      {number}  days    { parameter_description }
  */
 function createCookie(name,value,days) {
@@ -294,7 +328,8 @@ function createCookie(name,value,days) {
 }
 
 /**
- * Permet de récupérer la valeur d'une donné local stocké
+ * Comme son nom ne l'indique pas,
+ * Permet de récupérer la valeur d'une donnée local stockée
  *
  * @method     readCookie
  * @param      {string}  name    { le nom de la donné local }
@@ -317,7 +352,7 @@ function readCookie(name) {
 }
 
 /**
- * Supprime une donné local
+ * Supprime une donnée en local
  *
  * @method     eraseCookie
  * @param      {<type>}  name    { parameter_description }
@@ -327,7 +362,7 @@ function eraseCookie(name) {
 }
 
 /**
- * Permet de modifier le nom de l'utilisateur à tous moment dans le pogramme
+ * Permet de modifier le nom de l'utilisateur à tout moment dans le pogramme
  *
  * @method     modifier_nom
  * @param      {(Function|string)}  value   { parameter_description }
