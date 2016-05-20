@@ -194,11 +194,11 @@ var Eliza = new ElizaBot(BASE
 );
 
 
-    var nomUser; //Variable correspondant au nom de l'utilisateur
-    var espace = "";//le nombre d'espace pour décaler le texte au même nombre d'espace que selui de Eliza
-    var espace1 = "";        
-    var nbespace;
-    var nbespace1;
+var nomUser; //Variable correspondant au nom de l'utilisateur
+var espace = "";//le nombre d'espace pour décaler le texte au même nombre d'espace que selui de Eliza
+var espace1 = "";        
+var nbespace;
+var nbespace1;
     
     
 /**

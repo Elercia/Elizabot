@@ -9,20 +9,25 @@ ElizaBot.prototype.donner_exemple = function(mot_clef)
 		bon = "Tu peut regarder cet éxemple pour mieux comprendre cette définition", result="";
 
 	var rep = Eliza.rechercher_correspondance(mot_clef);
+	var img, div_ex, desc;
 
 	if(rep != undefined)
 	{
 		var ex = rep.exemple;
 		if(ex != "undefined" || ex.length == 1)
 		{
-			var img = document.createElement("img");
+			img = document.createElement("img");
 			img.setAttribute("alt", "Un magnifique exemple");
 			img.setAttribute("src", "exemple/" + ex);
 			img.setAttribute("id", "div_exemple_img");
 
-			var div_ex = document.getElementById('div_exemple');
+			desc = document.createElement("p");
+			desc.innerHTML="exemple de "+mot_clef;
+
+			div_ex = document.getElementById('div_exemple');
 			div_ex.innerHTML = "";
 			div_ex.appendChild(img);
+			div_ex.appendChild(desc);
 		}
 		else
 			result = erreur;
