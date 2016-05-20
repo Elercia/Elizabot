@@ -15,7 +15,6 @@ ElizaBot.prototype.donner_exemple = function(mot_clef)
 		var ex = rep.exemple;
 		if(ex != "undefined" || ex.length == 1)
 		{
-			alert(typeof ex);
 			var img = document.createElement("img");
 			img.setAttribute("alt", "Un magnifique exemple");
 			img.setAttribute("src", "exemple/" + ex);

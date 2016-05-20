@@ -119,7 +119,6 @@ ElizaBot.prototype.modifier_reponse = function(argv1, argv2) {
 		var num = Number(argv1);
 		if(argv2.id == "div_def_cle")
 		{
-			alert
 			if(argv2.value.split(",").length > 1)
 				this.ensemble_rep[num].changer_cle(argv2.value.split(","));
 			else
@@ -214,7 +213,7 @@ var Eliza = new ElizaBot(BASE
  */ 
 function chargement_page(){
 
-    admin(true);
+    admin(false);
     
     //console.log("Bienvenue sur votre site d'apprentissage des Mathématiques !"); //Message d'accueil
     //console.log("Rendez-vous sur la section 'COMMENT ÇA MARCHE ?' pour comprendre le focntionnement"); //Message d'accueil

@@ -7,12 +7,18 @@
  * @param      {string}  argv    { le contenue du fichier chargé }
  */
 ElizaBot.prototype.modifier_bdd = function(argv) {
-	this.ensemble_rep = [];
+	this.ensemble_rep = BASE;
 	var tmp = JSON.parse(argv);
+	var mc;
+	var rep;
 	for(var i in tmp)
 	{
-		//if(!(Eliza.rechercher_correspondance(tmp[i].mots_cle) instanceof Reponse))
-		this.ajouter_reponse(new Reponse(tmp[i].mots_cle, tmp[i].ensemble_def, tmp[i].ensemble_dependance, tmp[i].exemple));
+		mc = (Array.isArray(tmp[i].mots_cle))? (tmp[i].mots_cle)[0] : tmp[i].mots_cle;
+		rep = Eliza.rechercher_correspondance(mc);
+		if(!(rep instanceof Reponse))
+		{
+			this.ajouter_reponse(new Reponse(tmp[i].mots_cle, tmp[i].ensemble_def, tmp[i].ensemble_dependance, tmp[i].exemple));
+		}	
 	}
 	//this.ensemble_rep = JSON.parse(argv);
 };
@@ -25,7 +31,7 @@ ElizaBot.prototype.modifier_bdd = function(argv) {
 ElizaBot.prototype.exporter_bdd = function()
 {
 	var result;
-	result = JSON.stringify(this.ensemble_rep.slice(8));
+	result = JSON.stringify(this.ensemble_rep.slice(8), null, "\t");
 	//Création d'un objet LIEN
     var bu = document.getElementById('down');
     bu.setAttribute("href", "data:text/plain;charset=utf-8,"+encodeURIComponent(result));
