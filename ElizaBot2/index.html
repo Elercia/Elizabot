@@ -20,20 +20,23 @@
         <a href="ccm.html">Comment Ça Marche ?</a>
     </p>
     
-	<div id="div_user_dialogue">	
-		<p>
-			<textarea id="historique" readonly="readonly" rows="20"></textarea>
-		</p>
+    <div id="global">
+        <div id="bloc_texte">    
+	        <div id="div_user_dialogue">	
+		        <p>
+			        <textarea id="historique" readonly="readonly" rows="20"></textarea>
+		        </p>
 		
-		<p id="user_input">
-			<input type="text" class="myButton" placeholder="Posez moi votre question" id="user_input_text" onkeydown = "if (event.keyCode == 13){document.getElementById('user_input_submit').click()}" autofocus="true"/>
-			<input type="submit" class="myButton" value="Envoyer Message" id="user_input_submit" onclick="Eliza.donner_reponse()"/>
-		</p>
-	</div>
+		        <p id="user_input">
+			        <input type="text" class="myButton" placeholder="Posez moi votre question" id="user_input_text" onkeydown = "if (event.keyCode == 13){document.getElementById('user_input_submit').click()}" autofocus="true"/>
+			        <input type="submit" class="myButton" value="Envoyer Message" id="user_input_submit" onclick="Eliza.donner_reponse()"/>
+		        </p>
+	    </div>
 	
-	<div id="div_exemple">
-		
-	</div>
+	    </div>
+	    <div id="div_exemple">		
+	    </div>
+    </div>
 
 	<div id="div_modif">
 		<input type="file" class="myButton" id="file_user_export" />

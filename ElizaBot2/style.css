@@ -96,19 +96,19 @@ a
 #div_def_cle
 {
     margin: 3px;
-    width: 22%;
+    width: 15%;
 }
 
 #div_def_def
 {
     margin: 3px;
-    width: 48%;
+    width: 40%;
 }
 
 #div_def_dep
 {
     margin: 3px;
-    width: 18%;
+    width: 15%;
 }
 
 .div_def_para{
@@ -184,7 +184,7 @@ a
 .titre_div_1
 {
 	color:#585858;
-	font-size:25px;
+	font-size:35px;
 	text-align:center;
 }
 
@@ -215,6 +215,7 @@ a
 .legende
 {
     margin:0;
+    color:#585858;
 }
 
 
@@ -279,4 +280,26 @@ hr
 	top:1px;
 }
 
+#global #bloc_texte
+{
+    float:left;
+    width:60%;
+}
 
+#global #div_exemple
+{
+    margin-left:60%;
+    width:500px;
+    height:500px;
+}
+
+#global #div_exemple img
+{
+    width:500px;
+    height:350px;
+}
+
+#global #div_exemple p
+{
+    text-align:center;
+}
