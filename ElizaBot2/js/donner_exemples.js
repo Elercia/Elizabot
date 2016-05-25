@@ -22,7 +22,7 @@ ElizaBot.prototype.donner_exemple = function(mot_clef)
 			img.setAttribute("id", "div_exemple_img");
 
 			desc = document.createElement("p");
-			desc.innerHTML="exemple de "+mot_clef;
+			desc.innerHTML="Exemple de : "+mot_clef;
 
 			div_ex = document.getElementById('div_exemple');
 			div_ex.innerHTML = "";
