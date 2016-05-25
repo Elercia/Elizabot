@@ -290,7 +290,7 @@ hr
 {
     margin-left:65%;
     width:600px;
-    height:450px;
+    height:470px;
     border: 1px dashed #848484;
     position:relative;
 }
@@ -304,6 +304,8 @@ hr
 #global #div_exemple p
 {
     text-align:center;
+    font-size:25px;
+    font-weight:bold;
 }
 
 #titre_exemple
@@ -312,6 +314,6 @@ hr
     font-size:50px;
     text-transform:uppercase;
     font-family:Impact;
-    top:30%;
+    top:40%;
     right:35%;
 }
