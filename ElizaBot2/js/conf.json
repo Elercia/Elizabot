@@ -8,7 +8,7 @@
 			"Un graphe est un ensemble de points nommés nœuds (parfois sommets ou cellules), reliés par des traits (segments) ou flèches nommées arêtes (ou liens ou arcs). L'ensemble des arêtes entre noeuds forme une figure similaire à un réseau."
 		],
 		"ensemble_dependance": "",
-		"exemple": "exemple1.jpg"
+		"exemple": "graphe.jpg"
 	},
 	{
 		"mots_cle": [
@@ -26,7 +26,7 @@
 			"arc",
 			"arete"
 		],
-		"exemple": "exemple2.jpg"
+		"exemple": "sommet.jpg"
 	},
 	{
 		"mots_cle": [
@@ -37,7 +37,7 @@
 			"Un graphe orienté est un graphe dont les arêtes sont orientées (fléchées).Ces arêtes sont nommées arc. On distingue alors le sommet d'origine de l’arrête et son extrémité."
 		],
 		"ensemble_dependance": "graphe",
-		"exemple": ""
+		"exemple": "graphe_oriente.jpg"
 	},
 	{
 		"mots_cle": [
@@ -49,7 +49,7 @@
 			" il n'y a donc pas de sens"
 		],
 		"ensemble_dependance": "graphe",
-		"exemple": ""
+		"exemple": "graphe_non_oriente.jpg"
 	},
 	{
 		"mots_cle": [
@@ -60,7 +60,7 @@
 			" Une arête est une connexion entre deux sommets A et B. Dans le cas des graphes orientés on parle d'arc."
 		],
 		"ensemble_dependance": "graphe non oriente",
-		"exemple": ""
+		"exemple": "arete.jpg"
 	},
 	{
 		"mots_cle": [
@@ -75,7 +75,7 @@
 			"graphe oriente",
 			"arete"
 		],
-		"exemple": ""
+		"exemple": "arc.jpg"
 	},
 	{
 		"mots_cle": [
