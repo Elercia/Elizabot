@@ -426,14 +426,13 @@ window.onbeforeunload = function (e) {
 
 	// For IE and Firefox
 	if (e) {
-		createCookie("ElizaData",JSON.stringify(Eliza.ensemble_rep),"7");
+		createCookie("ElizaData",JSON.stringify(Eliza.ensemble_rep),7);
 
 		e.returnValue = 'Veuillez vérifier que vous avez bien exporté votre fichier de configuration.\n'
 	+'Dans le cas contraire votre configuration ne sera pas sauvegardée après la fermeture du navigateur';
 		return 'Veuillez vérifier que vous avez bien exporté votre fichier de configuration.\n'
 	+'Dans le cas contraire votre configuration ne sera pas sauvegardée après la fermeture du navigateur';
 	}else
-	// For Safari
-	return 'Veuillez vérifier que vous avez bien exporté votre fichier de configuration.\n'
-	+'Dans le cas contraire votre configuration ne sera pas sauvegardée après la fermeture du navigateur';
+		return 'Veuillez vérifier que vous avez bien exporté votre fichier de configuration.\n'
+		+'Dans le cas contraire votre configuration ne sera pas sauvegardée après la fermeture du navigateur';
 };
