@@ -89,7 +89,7 @@
 			"sommet",
 			"arete"
 		],
-		"exemple": ""
+		"exemple": "adjacent.jpg"
 	},
 	{
 		"mots_cle": [
@@ -105,7 +105,7 @@
 			"graphe oriente",
 			"arc"
 		],
-		"exemple": ""
+		"exemple": "predecesseur.jpg"
 	},
 	{
 		"mots_cle": [
@@ -121,7 +121,7 @@
 			"graphe oriente",
 			"arc"
 		],
-		"exemple": ""
+		"exemple": "successeur.jpg"
 	},
 	{
 		"mots_cle": [
@@ -137,7 +137,7 @@
 			"arete",
 			"boucle"
 		],
-		"exemple": ""
+		"exemple": "degre.jpg"
 	},
 	{
 		"mots_cle": [
@@ -154,7 +154,7 @@
 			"arc",
 			"predecesseur"
 		],
-		"exemple": ""
+		"exemple": "degre_entrant.jpg"
 	},
 	{
 		"mots_cle": [
@@ -171,7 +171,7 @@
 			"arc",
 			"successeur"
 		],
-		"exemple": ""
+		"exemple": "degre_sortant.jpg"
 	},
 	{
 		"mots_cle": [
