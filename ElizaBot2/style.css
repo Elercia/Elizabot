@@ -289,17 +289,29 @@ hr
 #global #div_exemple
 {
     margin-left:65%;
-    width:500px;
-    height:500px;
+    width:600px;
+    height:450px;
+    border: 1px dashed #848484;
+    position:relative;
 }
 
 #global #div_exemple img
 {
-    width:500px;
-    height:350px;
+    width:600px;
+    height:400px;
 }
 
 #global #div_exemple p
 {
     text-align:center;
+}
+
+#titre_exemple
+{
+    position:absolute;
+    font-size:50px;
+    text-transform:uppercase;
+    font-family:Impact;
+    top:30%;
+    right:35%;
 }
