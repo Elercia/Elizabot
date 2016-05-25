@@ -63,14 +63,14 @@ a
 
 #user_input{
     padding-top:10px;
-    width: 50%;
+    width: 100%;
     display: block;
     margin:auto;
     text-align: center;
 }
 
 #user_input #user_input_text{
-    width: 40%;
+    width: 60%;
 }
 
 #div_def_submit_voir{
@@ -299,6 +299,12 @@ hr
 {
     width:600px;
     height:400px;
+}
+
+#global #div_exemple img:focus
+{
+    width:900px;
+    height:900px;
 }
 
 #global #div_exemple p
