@@ -7,18 +7,24 @@
  * @param      {string}  argv    { le contenue du fichier chargé }
  */
 ElizaBot.prototype.modifier_bdd = function(argv) {
-	this.ensemble_rep = BASE;
-	var tmp = JSON.parse(argv);
-	var mc;
-	var rep;
-	for(var i in tmp)
-	{
-		mc = (Array.isArray(tmp[i].mots_cle))? (tmp[i].mots_cle)[0] : tmp[i].mots_cle;
-		rep = Eliza.rechercher_correspondance(mc);
-		if(!(rep instanceof Reponse))
+	try{
+		this.ensemble_rep = BASE;
+		var tmp = JSON.parse(argv);
+		var mc;
+		var rep;
+		for(var i in tmp)
 		{
-			this.ajouter_reponse(new Reponse(tmp[i].mots_cle, tmp[i].ensemble_def, tmp[i].ensemble_dependance, tmp[i].exemple));
-		}	
+
+			mc = (Array.isArray(tmp[i].mots_cle))? (tmp[i].mots_cle)[0] : tmp[i].mots_cle;
+			rep = Eliza.rechercher_correspondance(mc);
+			if(!(rep instanceof Reponse))
+			{
+				this.ajouter_reponse(new Reponse(tmp[i].mots_cle, tmp[i].ensemble_def, tmp[i].ensemble_dependance, tmp[i].exemple));
+			}
+		}
+	}catch(e){
+		alert("Erreur lors du chargement du fichier de configuration.\nVeuillez verifier que celui-ci est valide!");
+		this.ensemble_rep = BASE;
 	}
 	//this.ensemble_rep = JSON.parse(argv);
 };
