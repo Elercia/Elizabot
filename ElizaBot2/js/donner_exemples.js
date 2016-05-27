@@ -1,14 +1,14 @@
 /**
  * @method     donner_exemple
- * @param      {String}  mot_clef  { Les mots clés correspondant aux mots clé à donner }
+ * @param      {String}  mot_cle  { Les mots clés correspondant aux mots clé à donner }
  * @return     {string}  { Réponse incomplete }
  */
-ElizaBot.prototype.donner_exemple = function(mot_clef)
+ElizaBot.prototype.donner_exemple = function(mot_cle)
 {
 	var erreur = "Je n'ai malheureusement pas d'exemple à te proposer", 
 		bon = "Tu peut regarder cet exemple pour mieux comprendre cette définition", result="";
 
-	var rep = Eliza.rechercher_correspondance(mot_clef);
+	var rep = Eliza.rechercher_correspondance(mot_cle);
 	var img, div_ex, desc, src;
 
 	if(rep != undefined)
@@ -31,7 +31,7 @@ ElizaBot.prototype.donner_exemple = function(mot_clef)
 				};
 
 				desc = document.createElement("p");
-				desc.innerHTML="Exemple de : "+mot_clef;
+				desc.innerHTML="Exemple de : "+mot_cle;
 
 				div_ex = document.getElementById('div_exemple');
 				div_ex.innerHTML = "";
@@ -43,8 +43,10 @@ ElizaBot.prototype.donner_exemple = function(mot_clef)
 				// 	throw new Error("Erreur du chargement de l'image");// TODO
 				// }
 				result = bon;
+				this.derniers_mots_cles.push(mot_cle);
 			}catch(e){
 				alert(erreur_msg);
+				console.log(e.message);
 				result = "Je n'ai pas pu charger l'exemple. Tu peut néanmoins continuer à discuter avec moi !";
 			}
 		}
