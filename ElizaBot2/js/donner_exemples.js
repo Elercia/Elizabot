@@ -6,7 +6,7 @@
 ElizaBot.prototype.donner_exemple = function(mot_clef)
 {
 	var erreur = "Je n'ai malheureusement pas d'exemple à te proposer", 
-		bon = "Tu peut regarder cet éxemple pour mieux comprendre cette définition", result="";
+		bon = "Tu peut regarder cet exemple pour mieux comprendre cette définition", result="";
 
 	var rep = Eliza.rechercher_correspondance(mot_clef);
 	var img, div_ex, desc, src;
