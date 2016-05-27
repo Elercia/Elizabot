@@ -19,7 +19,7 @@ ElizaBot.prototype.donner_exemple = function(mot_clef)
 		{
 			try{
 				img = document.createElement("img");
-				img.setAttribute("alt", "Un magnifique exemple");
+				img.setAttribute("alt", "L'exemple que vous chercher n'a pas été trouvé !");
 				//img.setAttribute("src", "exemple/" + ex);
 				src = ((ex.indexOf("http://") != -1) || (ex.indexOf("https://") != -1))? (ex) : ("exemple/" + ex);
 				
