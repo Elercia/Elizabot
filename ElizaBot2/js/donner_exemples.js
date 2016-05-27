@@ -14,6 +14,7 @@ ElizaBot.prototype.donner_exemple = function(mot_clef)
 	if(rep != undefined)
 	{
 		var ex = rep.exemple;
+		var erreur_msg = "Erreur lors du chargement de l'exemple.\nVeuillez verifier si vous avez bien l'image dans le dossier exemple.\nSinon veuillez contacter la personne vous ayant donné les configurations pour lui demander de completer sa configurations";
 		if(ex != "undefined" || ex.length == 1)
 		{
 			try{
@@ -21,9 +22,13 @@ ElizaBot.prototype.donner_exemple = function(mot_clef)
 				img.setAttribute("alt", "Un magnifique exemple");
 				//img.setAttribute("src", "exemple/" + ex);
 				src = ((ex.indexOf("http://") != -1) || (ex.indexOf("https://") != -1))? (ex) : ("exemple/" + ex);
-				alert(src);
+				
 				img.setAttribute("src", src);
 				img.setAttribute("id", "div_exemple_img");
+				img.onerror = function(){
+					//return new Error("Erreur du chargement de l'image");
+					alert(erreur_msg);
+				};
 
 				desc = document.createElement("p");
 				desc.innerHTML="Exemple de : "+mot_clef;
@@ -34,13 +39,13 @@ ElizaBot.prototype.donner_exemple = function(mot_clef)
 				var test_img = document.getElementById("div_exemple_img");
 				div_ex.appendChild(desc);
 
-				if(!test_img.complete){
-					throw new Error("Erreur du chargement de l'image");// TODO
-				}
+				// if(!test_img.complete){
+				// 	throw new Error("Erreur du chargement de l'image");// TODO
+				// }
 				result = bon;
 			}catch(e){
-				alert("Erreur lors du chargement de l'exemple.\nVeuillez verifier si vous avez bien l'image dans le dossier exemple.\nSinon veuillez contacter la personne vous ayant donné les configurations pour lui demander de completer sa configurations");
-				result = e.message;
+				alert(erreur_msg);
+				result = "Je n'ai pas pu charger l'exemple. Tu peut néanmoins continuer à discuter avec moi !";
 			}
 		}
 		else
