@@ -11,14 +11,14 @@ ElizaBot.prototype.questionner_user = function(mot_clef)
 	var resultat = "Quelle notion ne comprend tu pas : Celle de ";
 
 	var rep1 = this.rechercher_correspondance(mot_clef);//on recherche la reponse correspondant au mot clé que l'on nous a donné
-
+	
 	if(!(rep1 instanceof Reponse))
 	{
-		resultat = "Je ne peux malheureusement pas t'aider";
+		return "Je ne peux malheureusement pas t'aider";
 	}
-	else if (rep1.ensemble_dependance=[]) 
+	else if (rep1.ensemble_dependance == "") 
 	{
-		resultat = "Je ne peut pas plus développer que ça";
+		return "Je ne peut pas plus développer que ça";
 	}
 	else
 	{
@@ -28,8 +28,9 @@ ElizaBot.prototype.questionner_user = function(mot_clef)
 			resultat += dep.join(" ou de ");
 		else
 			resultat += dep;
+		resultat += "?";
 	}
-	resultat += "?";
+	
 
 	return resultat;  
 }
