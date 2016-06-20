@@ -182,7 +182,6 @@ new Reponse(["bonjour","salut","wesh"], "comment vas tu?", []),
 new Reponse(["merci","cimer","remercie"], "De rien c'est un plaisir de t'aider", []),
 new Reponse(["vais bien"," vais tres bien"], "Je suis content pour toi !", []),
 new Reponse(["vais mal","vais pas bien"], "Dommage pour toi", []),
-new Reponse(["pute","conne","salope","petasse","con","putain","salop"], "Pas la peine d'être grossier !", []),
 ];
 
 /**
