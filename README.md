@@ -1,5 +1,5 @@
-#Version1
-Contient le code de la version 1 du projet Eliza Talk
+#Elizabot
+Projet de semestre 1 visant à réaliser un analyseur de conversation, une aide au révision. 
 
 ###Projet made by 
 * Lucas Martineau
