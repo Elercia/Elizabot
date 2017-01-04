@@ -1,5 +1,5 @@
 #Elizabot
-Projet de semestre 1 visant à réaliser un analyseur de conversation, une aide au révision. 
+Projet de semestre 2 visant à réaliser un analyseur de conversation, une aide au révision. 
 
 ###Projet made by 
 * Lucas Martineau
